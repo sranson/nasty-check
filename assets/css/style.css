@@ -15,3 +15,7 @@
     word-wrap: normal;
     margin: 2px 2px 2px 2px;
 }
+
+body {
+    background-image: url(./assets/Food_Recipe.jpg);
+}

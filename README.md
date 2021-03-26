@@ -1,2 +1,3 @@
-# nasty-check
-App that determines how NSFW your twitter profile is
+# recipe-finder
+
+App that provides meal and cocktail recipes.

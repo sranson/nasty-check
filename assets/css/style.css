@@ -17,5 +17,7 @@
 }
 
 body {
-    background-image: url(./assets/Food_Recipe.jpg);
+    background-image: url(/assets/pexels-julie-aagaard-2097090.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }

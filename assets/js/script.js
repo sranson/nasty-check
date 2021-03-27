@@ -33,12 +33,21 @@ var getMealReceipes = function (mealType, proteinType, cusineType) {
 function formatMealData(data) {
   mealData = data;
   recipeNumber = mealData.hits.length;
-  //console.log("Number of Food Recipes:" + recipeNumber);
+  console.log("Number of Food Recipes Returned from API call: " + recipeNumber);
+  console.log("-------------");
   for (i = 0; i < recipeNumber; i++) {
     recipeLabel = mealData.hits[i].recipe.label; // Recipe Label
     recipeSourceName = mealData.hits[i].recipe.source; // Source Name
     recipeImage = mealData.hits[i].recipe.image; // Recipe image
     recipeInstructionsLink = mealData.hits[i].recipe.url; // Recipe Instructions URL
+
+    console.log("Recipe Label " + i + ": " + recipeLabel);
+    console.log("Recipe Source " + i + ": " + recipeSourceName);
+    console.log("Recipe Image " + i + ": " + recipeImage);
+    console.log(
+      "Recipe URL for instructions " + i + ": " + recipeInstructionsLink
+    );
+    console.log("-------------");
   }
 }
 
@@ -70,7 +79,7 @@ var getCocktailID = function (alcoholType) {
 function getDrinkID(data) {
   cocktailIDdata = data;
   cocktailNumber = cocktailIDdata.drinks.length;
-  console.log("Number of Cocktail recipes returned: " + cocktailNumber);
+  //console.log("Number of Cocktail recipes returned from API Call: " + cocktailNumber);
 
   for (i = 0; i < cocktailNumber; i++) {
     drinkID = cocktailIDdata.drinks[i].idDrink;

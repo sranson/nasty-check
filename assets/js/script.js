@@ -93,19 +93,25 @@ function formatDrinkData(data) {
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
     cocktailID = cockTailData.drinks[i].idDrink;
     getCocktailRecipe(cocktailID);
+    storeAllCocktailVariables(cocktailName, cocktailImage, cocktailID)
   }
 }
 
 
 function getCocktailRecipe(cocktailID) {
-  //console.log(cocktailID)
   drinkIDarray.push(cocktailID);
-  console.log(drinkIDarray);
+  //console.log(drinkIDarray);
 
   for (i=0; i < drinkIDarray.length; i++) {
       // Make an API call that returns the (1) Ingredients and (2) the instructions;  
+      // Note: the "formatDrinkData" function already has the (1) Cocktail name and (2) Cocktail Image stored in variables
   } 
-  // Note: the "formatDrinkData" function already has the (1) Cocktail name and (2) Cocktail Image stored in variables
+}
+
+function storeAllCocktailVariables(cocktailName, cocktailImage, cocktailID) {
+  console.log(cocktailName);
+  console.log(cocktailImage);
+  console.log(cocktailID);
 }
 
 

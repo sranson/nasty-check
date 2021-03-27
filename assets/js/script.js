@@ -43,3 +43,5 @@ function formatMealData(data) {
 }
 
 getMealReceipes(mealType, proteinType, cusineType);
+
+// Make API call to CocktailDB to get

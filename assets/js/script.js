@@ -1,8 +1,8 @@
 // temporary hard-coded values
 // get this data from user dropdown menus
-let proteinType = "chicken";
+let proteinType = "beef";
 let mealType = "dinner";
-let cusineType = "american";
+let cusineType = "chinese";
 
 // Meal Data API calls
 var getMealReceipes = function (mealType, proteinType, cusineType) {
@@ -29,13 +29,17 @@ var getMealReceipes = function (mealType, proteinType, cusineType) {
     });
 };
 
-// Formats the Meal Data
+// Formats the Meal Recipe Data
 function formatMealData(data) {
   mealData = data;
-  console.log(mealData.hits[0].recipe.label); // Recipe Name
-  console.log(mealData.hits[0].recipe.source); // Source Name
-  console.log(mealData.hits[0].recipe.image); // Recipe image
-  console.log(mealData.hits[0].recipe.url); // Recipe Instructions URL
+  recipeNumber = mealData.hits.length;
+  console.log(recipeNumber);
+  for (i = 0; i < recipeNumber; i++) {
+    console.log(mealData.hits[i].recipe.label); // Recipe Label
+    console.log(mealData.hits[i].recipe.source); // Source Name
+    console.log(mealData.hits[i].recipe.image); // Recipe image
+    console.log(mealData.hits[i].recipe.url); // Recipe Instructions URL
+  }
 }
 
 getMealReceipes(mealType, proteinType, cusineType);

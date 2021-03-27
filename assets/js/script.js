@@ -42,12 +42,10 @@ function formatMealData(data) {
   }
 }
 
-getMealReceipes(mealType, proteinType, cusineType);
-
 // Make API call to CocktailDB to get the "drink ID" based on "Alcohol ingredient"
 // Will need to pass in a "alcohol type""
 
-let alcoholType = "gin";
+let alcoholType = "tequila";
 
 var getCocktailID = function (alcoholType) {
   var cocktailAPI1 =
@@ -68,8 +66,6 @@ var getCocktailID = function (alcoholType) {
     });
 };
 
-getCocktailID(alcoholType);
-
 //Grab drink ID
 function getDrinkID(data) {
   cocktailIDdata = data;
@@ -77,9 +73,40 @@ function getDrinkID(data) {
   console.log("Number of Cocktail recipes returned: " + cocktailNumber);
 
   for (i = 0; i < cocktailNumber; i++) {
-    cocktailID = cocktailIDdata.drinks[i].idDrink;
-    console.log(cocktailID);
+    drinkID = cocktailIDdata.drinks[i].idDrink;
+    //console.log(drinkID);
   }
 }
 
+let drinkID = "13940";
+
 // Make API call to get Cocktail recipes based on the "drink ID"
+var getCocktailRecipe = function (drinkID) {
+  var cocktailRecipe =
+    "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID;
+
+  fetch(cocktailRecipe)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          formatCocktailData(data);
+        });
+      } else {
+        alert("Error" + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      alert("Unable to connect to Meal API");
+    });
+};
+
+getCocktailRecipe(drinkID);
+
+function formatCocktailData(data) {
+  //console.log(data);
+}
+
+// TRIGGERS API CALL FUNCTIONS
+//================================================================================
+getMealReceipes(mealType, proteinType, cusineType);
+getCocktailID(alcoholType);

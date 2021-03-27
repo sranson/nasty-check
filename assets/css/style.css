@@ -5,11 +5,7 @@
 } */
 
 body {
-<<<<<<< HEAD
-  background-image: url(/assets/images/pexels-julie-aagaard-2097090.jpg);
-=======
   background-image: url(../images/pexels-julie-aagaard-2097090.jpg);
->>>>>>> 0d350c8b6e69463542bd72ffd74d4b410a2b932e
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 2%;

@@ -99,9 +99,9 @@ function formatDrinkData(data) {
 }
 
 
-// Add an event listener to ALL 5 Cards ... Based on "e.target", grab the drinkID and store it in a variable -- "drinkID") 
+// Add an event listener to ALL 5 Cards ... Based on "e.target", grab the drinkID and store it in a variable -- "drinkID"... Pass the drinkID to the "getCocktailRecipeData" function) 
 // THIS IS HARD-CODED FOR NOW
-getCocktailRecipeData("14364");
+getCocktailRecipeData("14560");
 
 
 function getCocktailRecipeData (drinkID) {
@@ -131,16 +131,16 @@ function formatCocktailRecipeData(data) {
   //console.log(cocktailRecipe);
   cocktailName = cocktailRecipe.drinks[0].strDrink;
   cocktailImage = cocktailRecipe.drinks[0].strDrinkThumb;
-   if (cocktailRecipe.drinks[0].strIngredient1 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient1)};
-   if (cocktailRecipe.drinks[0].strIngredient2 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient2)};
-   if (cocktailRecipe.drinks[0].strIngredient3 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient3)};
-   if (cocktailRecipe.drinks[0].strIngredient4 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient4)};
-   if (cocktailRecipe.drinks[0].strIngredient5 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient5)};
-   if (cocktailRecipe.drinks[0].strIngredient6 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient6)};
-   if (cocktailRecipe.drinks[0].strIngredient7 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient7)};
-   if (cocktailRecipe.drinks[0].strIngredient8 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient8)};
-   if (cocktailRecipe.drinks[0].strIngredient9 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient9)};
-   if (cocktailRecipe.drinks[0].strIngredient10 !== null && cocktailRecipe.drinks[0].strIngredient1 !== "") {ingredients.push(cocktailRecipe.drinks[0].strIngredient10)};
+   if (cocktailRecipe.drinks[0].strIngredient1 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient1)};
+   if (cocktailRecipe.drinks[0].strIngredient2 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient2)};
+   if (cocktailRecipe.drinks[0].strIngredient3 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient3)};
+   if (cocktailRecipe.drinks[0].strIngredient4 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient4)};
+   if (cocktailRecipe.drinks[0].strIngredient5 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient5)};
+   if (cocktailRecipe.drinks[0].strIngredient6 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient6)};
+   if (cocktailRecipe.drinks[0].strIngredient7 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient7)};
+   if (cocktailRecipe.drinks[0].strIngredient8 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient8)};
+   if (cocktailRecipe.drinks[0].strIngredient9 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient9)};
+   if (cocktailRecipe.drinks[0].strIngredient10 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient10)};
   
 
    if (data.drinks[0].strMeasure1 !== null) {measurements.push(data.drinks[0].strMeasure1)};
@@ -159,10 +159,20 @@ function formatCocktailRecipeData(data) {
   //return (cocktailName, cocktailImage, ingredients, measurements, instructions)
   console.log(cocktailName);
   console.log(cocktailImage);
-  console.log(ingredients);
-  console.log(measurements);
+  //console.log(ingredients);
+  //if (measurements.length !== 0) {console.log(measurements)} else {console.log("NO MEASUREMENTS");};
+  //console.log(instructions);
+
+  if (cocktailRecipe.drinks[0].strIngredient1 !== null) {console.log(`${measurements[0]}${ingredients[0]}`)};
+  if (cocktailRecipe.drinks[0].strIngredient2 !== null) {console.log(`${measurements[1]}${ingredients[1]}`)};
+  if (cocktailRecipe.drinks[0].strIngredient3 !== null) {console.log(`${measurements[2]}${ingredients[2]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient4 !== null) {console.log(`${measurements[3]}${ingredients[3]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient5 !== null) {console.log(`${measurements[4]}${ingredients[4]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient6 !== null) {console.log(`${measurements[5]}${ingredients[5]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient7 !== null) {console.log(`${measurements[6]}${ingredients[6]}`);}
   console.log(instructions);
 }
+
 
 
 

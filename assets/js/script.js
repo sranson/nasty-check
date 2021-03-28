@@ -1,14 +1,17 @@
-var searchBtn = document.getElementById('searchBtn');
-
-
 function getUserInputForMeals() {
-  console.log('THE SEARCH BUTTON WAS CLICKED');
+  // Get the user's input for meal type
+   
+  // Get the user's input for protein type
+
+  // Get the user's input for cuisine type
+
+  // pass the values for all 3 variables to the "getMealReceipes" function
 }
 
 
 
-// temporary hard-coded values
-// get this data from user dropdown menus
+
+// Temporary hard-coded values........ get this data from "getUserInputForMeals" function
 let proteinType = "beef";
 let mealType = "lunch";
 let cusineType = "chinese";
@@ -42,20 +45,20 @@ var getMealReceipes = function (mealType, proteinType, cusineType) {
 function formatMealData(data) {
   mealData = data;
   recipeNumber = mealData.hits.length;
-  //console.log("Number of Food Recipes Returned from API call: " + recipeNumber);
-  //console.log("-------------");
+  console.log("Number of Food Recipes Returned from API call: " + recipeNumber);
+  console.log("-------------");
   for (i = 0; i < recipeNumber; i++) {
-    recipeLabel = mealData.hits[i].recipe.label; // Recipe Label
-    recipeSourceName = mealData.hits[i].recipe.source; // Source Name
-    recipeImage = mealData.hits[i].recipe.image; // Recipe image
-    recipeInstructionsLink = mealData.hits[i].recipe.url; // Recipe Instructions URL
-    //console.log("Recipe Label " + i + ": " + recipeLabel);
-    //console.log("Recipe Source " + i + ": " + recipeSourceName);
-    //console.log("Recipe Image " + i + ": " + recipeImage);
-    //console.log(
+    recipeLabel = mealData.hits[i].recipe.label; 
+    recipeSourceName = mealData.hits[i].recipe.source; 
+    recipeImage = mealData.hits[i].recipe.image; 
+    recipeInstructionsLink = mealData.hits[i].recipe.url;
+    console.log("Recipe Label " + i + ": " + recipeLabel);
+    console.log("Recipe Source " + i + ": " + recipeSourceName);
+    console.log("Recipe Image " + i + ": " + recipeImage);
+    console.log(
     "Recipe URL for instructions " + i + ": " + recipeInstructionsLink
-    //);
-    //console.log("-------------");
+    );
+    console.log("-------------");
   }
 }
 
@@ -95,8 +98,6 @@ cocktailIdArray = []
 // Step 3: FIRST API call returns (1)DRINK NAME (2)DRINK IMAGE (3)DRINK ID into ARRAYS  ================= USE THIS DATA TO SHOW THE USER 5 DRINK CARDS/ OPTIONS ==============================
 function formatDrinkData(data) {
   cockTailData = data;
-  //console.log("Number of recipes returned from API call: " + cockTailData.drinks.length);
-
   for (i=0; i < 5; i++) {
     cocktailName = cockTailData.drinks[i].strDrink;
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
@@ -167,20 +168,16 @@ function formatCocktailRecipeData(data) {
   instructions = data.drinks[0].strInstructions;
 
   //return (cocktailName, cocktailImage, ingredients, measurements, instructions)
-  //console.log(cocktailName);
-  //console.log(cocktailImage);
-  //console.log(ingredients);
-  //if (measurements.length !== 0) {console.log(measurements)} else {console.log("NO MEASUREMENTS");};
-  //console.log(instructions);
-
-  //if (cocktailRecipe.drinks[0].strIngredient1 !== null) {console.log(`${measurements[0]} ${ingredients[0]}`)};
-  //if (cocktailRecipe.drinks[0].strIngredient2 !== null) {console.log(`${measurements[1]} ${ingredients[1]}`)};
-  //if (cocktailRecipe.drinks[0].strIngredient3 !== null) {console.log(`${measurements[2]} ${ingredients[2]}`);}
-  //if (cocktailRecipe.drinks[0].strIngredient4 !== null) {console.log(`${measurements[3]} ${ingredients[3]}`);}
-  //if (cocktailRecipe.drinks[0].strIngredient5 !== null) {console.log(`${measurements[4]} ${ingredients[4]}`);}
-  //if (cocktailRecipe.drinks[0].strIngredient6 !== null) {console.log(`${measurements[5]} ${ingredients[5]}`);}
-  //if (cocktailRecipe.drinks[0].strIngredient7 !== null) {console.log(`${measurements[6]} ${ingredients[6]}`);}
-  //console.log(instructions);
+  console.log(cocktailName);
+  console.log(cocktailImage);
+  if (cocktailRecipe.drinks[0].strIngredient1 !== null) {console.log(`${measurements[0]} ${ingredients[0]}`)};
+  if (cocktailRecipe.drinks[0].strIngredient2 !== null) {console.log(`${measurements[1]} ${ingredients[1]}`)};
+  if (cocktailRecipe.drinks[0].strIngredient3 !== null) {console.log(`${measurements[2]} ${ingredients[2]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient4 !== null) {console.log(`${measurements[3]} ${ingredients[3]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient5 !== null) {console.log(`${measurements[4]} ${ingredients[4]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient6 !== null) {console.log(`${measurements[5]} ${ingredients[5]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient7 !== null) {console.log(`${measurements[6]} ${ingredients[6]}`);}
+  console.log(instructions);
 }
 
 
@@ -195,7 +192,7 @@ getCocktailAPIdata(alcoholType);
 
 // EVENT LISTENERS
 //================================================================================
-searchBtn.addEventListener('click', getUserInputForMeals);
+
 
 //================================================================================
 

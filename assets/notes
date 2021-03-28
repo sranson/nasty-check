@@ -1,0 +1,17 @@
+
+Step 1: User provides alcohol type
+
+Step 2: We make an API call based on alcohol type
+
+Step 3: FIRST API call returns  (1)DRINK NAME (2)DRINK IMAGE (3)DRINK ID
+Based on data from the FIRST API call, we can show the user 5 drinks cards/ options
+
+
+Step 4:
+Place an event listener on each card.
+If a card is clicked, pass in that cards “drinkID” to the SECOND api call to get 
+(1) Ingredients
+(2) Measurements
+(3) Instructions
+(4) We already have the cocktail name
+(5) We already have the cocktail image

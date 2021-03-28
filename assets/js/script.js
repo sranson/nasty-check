@@ -1,8 +1,8 @@
 // temporary hard-coded values
 // get this data from user dropdown menus
-let proteinType = "chicken";
-let mealType = "dinner";
-let cusineType = "italian";
+let proteinType = "beef";
+let mealType = "lunch";
+let cusineType = "chinese";
 
 // Meal Data API calls
 var getMealReceipes = function (mealType, proteinType, cusineType) {
@@ -33,26 +33,26 @@ var getMealReceipes = function (mealType, proteinType, cusineType) {
 function formatMealData(data) {
   mealData = data;
   recipeNumber = mealData.hits.length;
-  //console.log("Number of Food Recipes Returned from API call: " + recipeNumber);
-  //console.log("-------------");
+  console.log("Number of Food Recipes Returned from API call: " + recipeNumber);
+  console.log("-------------");
   for (i = 0; i < recipeNumber; i++) {
     recipeLabel = mealData.hits[i].recipe.label; // Recipe Label
     recipeSourceName = mealData.hits[i].recipe.source; // Source Name
     recipeImage = mealData.hits[i].recipe.image; // Recipe image
     recipeInstructionsLink = mealData.hits[i].recipe.url; // Recipe Instructions URL
-    //console.log("Recipe Label " + i + ": " + recipeLabel);
-    //console.log("Recipe Source " + i + ": " + recipeSourceName);
-    //console.log("Recipe Image " + i + ": " + recipeImage);
-    //console.log(
-      //"Recipe URL for instructions " + i + ": " + recipeInstructionsLink
-   // );
-    //console.log("-------------");
+    console.log("Recipe Label " + i + ": " + recipeLabel);
+    console.log("Recipe Source " + i + ": " + recipeSourceName);
+    console.log("Recipe Image " + i + ": " + recipeImage);
+    console.log(
+    "Recipe URL for instructions " + i + ": " + recipeInstructionsLink
+    );
+    console.log("-------------");
   }
 }
 
 
 // Step 1: User provides alcohol type
-let alcoholType = "rum";
+let alcoholType = "vodka";
 
 
 
@@ -95,13 +95,14 @@ function formatDrinkData(data) {
     cocktailNameArray.push(cocktailName);
     cocktailImageArray.push(cocktailImage);
     cocktailIdArray.push(cocktailID);
+    console.log(cocktailIdArray);
   }
 }
 
 
 // Add an event listener to ALL 5 Cards ... Based on "e.target", grab the drinkID and store it in a variable -- "drinkID"... Pass the drinkID to the "getCocktailRecipeData" function) 
 // THIS IS HARD-CODED FOR NOW
-getCocktailRecipeData("14560");
+getCocktailRecipeData("178318");
 
 
 function getCocktailRecipeData (drinkID) {
@@ -163,13 +164,13 @@ function formatCocktailRecipeData(data) {
   //if (measurements.length !== 0) {console.log(measurements)} else {console.log("NO MEASUREMENTS");};
   //console.log(instructions);
 
-  if (cocktailRecipe.drinks[0].strIngredient1 !== null) {console.log(`${measurements[0]}${ingredients[0]}`)};
-  if (cocktailRecipe.drinks[0].strIngredient2 !== null) {console.log(`${measurements[1]}${ingredients[1]}`)};
-  if (cocktailRecipe.drinks[0].strIngredient3 !== null) {console.log(`${measurements[2]}${ingredients[2]}`);}
-  if (cocktailRecipe.drinks[0].strIngredient4 !== null) {console.log(`${measurements[3]}${ingredients[3]}`);}
-  if (cocktailRecipe.drinks[0].strIngredient5 !== null) {console.log(`${measurements[4]}${ingredients[4]}`);}
-  if (cocktailRecipe.drinks[0].strIngredient6 !== null) {console.log(`${measurements[5]}${ingredients[5]}`);}
-  if (cocktailRecipe.drinks[0].strIngredient7 !== null) {console.log(`${measurements[6]}${ingredients[6]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient1 !== null) {console.log(`${measurements[0]} ${ingredients[0]}`)};
+  if (cocktailRecipe.drinks[0].strIngredient2 !== null) {console.log(`${measurements[1]} ${ingredients[1]}`)};
+  if (cocktailRecipe.drinks[0].strIngredient3 !== null) {console.log(`${measurements[2]} ${ingredients[2]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient4 !== null) {console.log(`${measurements[3]} ${ingredients[3]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient5 !== null) {console.log(`${measurements[4]} ${ingredients[4]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient6 !== null) {console.log(`${measurements[5]} ${ingredients[5]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient7 !== null) {console.log(`${measurements[6]} ${ingredients[6]}`);}
   console.log(instructions);
 }
 

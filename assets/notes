@@ -15,3 +15,29 @@ If a card is clicked, pass in that cards “drinkID” to the SECOND api call to
 (3) Instructions
 (4) We already have the cocktail name
 (5) We already have the cocktail image
+
+
+
+
+   if (cocktailRecipe.drinks[0].strIngredient1 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient1)};
+   if (cocktailRecipe.drinks[0].strIngredient2 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient2)};
+   if (cocktailRecipe.drinks[0].strIngredient3 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient3)};
+   if (cocktailRecipe.drinks[0].strIngredient4 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient4)};
+   if (cocktailRecipe.drinks[0].strIngredient5 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient5)};
+   if (cocktailRecipe.drinks[0].strIngredient6 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient6)};
+   if (cocktailRecipe.drinks[0].strIngredient7 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient7)};
+   if (cocktailRecipe.drinks[0].strIngredient8 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient8)};
+   if (cocktailRecipe.drinks[0].strIngredient9 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient9)};
+   if (cocktailRecipe.drinks[0].strIngredient10 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient10)};
+  
+
+   if (data.drinks[0].strMeasure1 !== null) {measurements.push(data.drinks[0].strMeasure1)};
+   if (data.drinks[0].strMeasure2 !== null) {measurements.push(data.drinks[0].strMeasure2)};
+   if (data.drinks[0].strMeasure3 !== null) {measurements.push(data.drinks[0].strMeasure3)};
+   if (data.drinks[0].strMeasure4 !== null) {measurements.push(data.drinks[0].strMeasure4)};
+   if (data.drinks[0].strMeasure5 !== null) {measurements.push(data.drinks[0].strMeasure5)};
+   if (data.drinks[0].strMeasure6 !== null) {measurements.push(data.drinks[0].strMeasure6)};
+   if (data.drinks[0].strMeasure7 !== null) {measurements.push(data.drinks[0].strMeasure7)};
+   if (data.drinks[0].strMeasure8 !== null) { measurements.push(data.drinks[0].strMeasure8)};
+   if (data.drinks[0].strMeasure9 !== null) {measurements.push(data.drinks[0].strMeasure9)};
+   if (data.drinks[0].strMeasure10 !== null) {measurements.push(data.drinks[0].strMeasure10)};

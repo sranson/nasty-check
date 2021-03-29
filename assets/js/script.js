@@ -124,18 +124,23 @@ cocktailIdArray = []
 function formatDrinkData(data) {
   cockTailData = data;
   for (i=0; i < 5; i++) {
+    // Use cocktailName and cocktailImage to show search results for 5 cards
+    //==================================================================================
     cocktailName = cockTailData.drinks[i].strDrink;
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
-    cocktailID = cockTailData.drinks[i].idDrink;
+    cocktailID = cockTailData.drinks[i].idDrink; //Although the cocktailID will not be visible, add the cocktailID on to each card so an event listener will push the cocktailID to the "getCocktailRecipeData" function
+    //==================================================================================
     cocktailNameArray.push(cocktailName);
     cocktailImageArray.push(cocktailImage);
-    cocktailIdArray.push(cocktailID);
-    getCocktailRecipeData(cocktailIdArray[i]);
+    cocktailIdArray.push(cocktailID);                             // I am pushing the 5 cocktail IDs into an array
+    getCocktailRecipeData(cocktailID);
   }
+    // Add an event listener to ALL 5 Cards
+    // Based on the target card, grab the drinkID and store it in a variable called "currentCocktailID"
+    //Pass "currentCocktailID" to the "getCocktailRecipeData" function) 
+    //getCocktailRecipeData(currentCocktailID);                        
 }
 
-
-// Add an event listener to ALL 5 Cards ... Based on "e.target", grab the drinkID and store it in a variable -- "drinkID"... Pass the drinkID to the "getCocktailRecipeData" function) 
 
 function getCocktailRecipeData (drinkID) {
   var cocktailAPI2 = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="+drinkID;
@@ -161,47 +166,51 @@ measurements = [];
 
 function formatCocktailRecipeData(data) {
   cocktailRecipe = data;
-  //console.log(cocktailRecipe);
+  //=================================================================
   cocktailName = cocktailRecipe.drinks[0].strDrink;
   cocktailImage = cocktailRecipe.drinks[0].strDrinkThumb;
-   if (cocktailRecipe.drinks[0].strIngredient1 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient1)};
-   if (cocktailRecipe.drinks[0].strIngredient2 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient2)};
-   if (cocktailRecipe.drinks[0].strIngredient3 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient3)};
-   if (cocktailRecipe.drinks[0].strIngredient4 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient4)};
-   if (cocktailRecipe.drinks[0].strIngredient5 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient5)};
-   if (cocktailRecipe.drinks[0].strIngredient6 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient6)};
-   if (cocktailRecipe.drinks[0].strIngredient7 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient7)};
-   if (cocktailRecipe.drinks[0].strIngredient8 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient8)};
-   if (cocktailRecipe.drinks[0].strIngredient9 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient9)};
-   if (cocktailRecipe.drinks[0].strIngredient10 !== null) {ingredients.push(cocktailRecipe.drinks[0].strIngredient10)};
-  
-
-   if (data.drinks[0].strMeasure1 !== null) {measurements.push(data.drinks[0].strMeasure1)};
-   if (data.drinks[0].strMeasure2 !== null) {measurements.push(data.drinks[0].strMeasure2)};
-   if (data.drinks[0].strMeasure3 !== null) {measurements.push(data.drinks[0].strMeasure3)};
-   if (data.drinks[0].strMeasure4 !== null) {measurements.push(data.drinks[0].strMeasure4)};
-   if (data.drinks[0].strMeasure5 !== null) {measurements.push(data.drinks[0].strMeasure5)};
-   if (data.drinks[0].strMeasure6 !== null) {measurements.push(data.drinks[0].strMeasure6)};
-   if (data.drinks[0].strMeasure7 !== null) {measurements.push(data.drinks[0].strMeasure7)};
-   if (data.drinks[0].strMeasure8 !== null) { measurements.push(data.drinks[0].strMeasure8)};
-   if (data.drinks[0].strMeasure9 !== null) {measurements.push(data.drinks[0].strMeasure9)};
-   if (data.drinks[0].strMeasure10 !== null) {measurements.push(data.drinks[0].strMeasure10)};
-
+  ingr1 = cocktailRecipe.drinks[0].strIngredient1;
+  ingr2 = cocktailRecipe.drinks[0].strIngredient2;
+  ingr3 = cocktailRecipe.drinks[0].strIngredient3;
+  ingr4 = cocktailRecipe.drinks[0].strIngredient4;
+  ingr5 = cocktailRecipe.drinks[0].strIngredient5;
+  ingr6 = cocktailRecipe.drinks[0].strIngredient6;
+  ingr7 = cocktailRecipe.drinks[0].strIngredient7;
+  ingr8 = cocktailRecipe.drinks[0].strIngredient8;
+  ingr9 = cocktailRecipe.drinks[0].strIngredient9;
+  ingr10 = cocktailRecipe.drinks[0].strIngredient10;
+  meas1 =  cocktailRecipe.drinks[0].strMeasure1
+  meas2 =  cocktailRecipe.drinks[0].strMeasure2
+  meas3 =  cocktailRecipe.drinks[0].strMeasure3
+  meas4 =  cocktailRecipe.drinks[0].strMeasure4
+  meas5 =  cocktailRecipe.drinks[0].strMeasure5
+  meas6 =  cocktailRecipe.drinks[0].strMeasure6
+  meas7 =  cocktailRecipe.drinks[0].strMeasure7
+  meas8 =  cocktailRecipe.drinks[0].strMeasure8
+  meas9 =  cocktailRecipe.drinks[0].strMeasure9
+  meas10 =  cocktailRecipe.drinks[0].strMeasure10
   instructions = data.drinks[0].strInstructions;
+  //=================================================================
 
-  //return (cocktailName, cocktailImage, ingredients, measurements, instructions)
+
+  //=================================================================CONSOLE LOGS FOR TESTING===========================================================
   console.log(cocktailName);
   console.log(cocktailImage);
-  if (cocktailRecipe.drinks[0].strIngredient1 !== null) {console.log(`${measurements[0]} ${ingredients[0]}`)};
-  if (cocktailRecipe.drinks[0].strIngredient2 !== null) {console.log(`${measurements[1]} ${ingredients[1]}`)};
-  if (cocktailRecipe.drinks[0].strIngredient3 !== null) {console.log(`${measurements[2]} ${ingredients[2]}`);}
-  if (cocktailRecipe.drinks[0].strIngredient4 !== null) {console.log(`${measurements[3]} ${ingredients[3]}`);}
-  if (cocktailRecipe.drinks[0].strIngredient5 !== null) {console.log(`${measurements[4]} ${ingredients[4]}`);}
-  if (cocktailRecipe.drinks[0].strIngredient6 !== null) {console.log(`${measurements[5]} ${ingredients[5]}`);}
-  if (cocktailRecipe.drinks[0].strIngredient7 !== null) {console.log(`${measurements[6]} ${ingredients[6]}`);}
+  // For front-end, only add ingredients to HTML if ingredient !== null
+  if (ingr1 !== null) {console.log(`${meas1} ${ingr1}`)};
+  if (ingr2 !== null) {console.log(`${meas2} ${ingr2}`)};
+  if (ingr3 !== null) {console.log(`${meas3} ${ingr3}`);}
+  if (ingr4 !== null) {console.log(`${meas4} ${ingr4}`);}
+  if (ingr5 !== null) {console.log(`${meas5} ${ingr5}`);}
+  if (ingr6 !== null) {console.log(`${meas6} ${ingr6}`);}
+  if (ingr7 !== null) {console.log(`${meas7} ${ingr7}`);}
+  if (ingr8 !== null) {console.log(`${meas8} ${ingr8}`);}
+  if (ingr9 !== null) {console.log(`${meas9} ${ingr9}`);}
+  if (ingr10 !== null) {console.log(`${meas10} ${ingr10}`);}
   console.log(instructions);
   console.log("------------------------");
   console.log("");
+  //======================================================================================================================================================
 }
 
 

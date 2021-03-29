@@ -9,12 +9,12 @@
   margin: 0;
   padding: 0;
 }
-/* body {
+body {
   background-image: url(../images/pexels-julie-aagaard-2097090.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 2%;
-} */
+}
 html {
   height: 100vh;
 }
@@ -60,39 +60,4 @@ html {
 .submitBtn {
   width: 90%;
   margin: 1%;
-}
-/* Drink Results HTML */
-.drink-result {
-  font-family: "Courgette", cursive;
-  background-image: url(../images/pexels-cottonbro-4686940.jpg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
-  
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-}
-/* Food and Cocktail Recipes Brand */
-.my-brand {
-  font-size: 30px;
-}
-/* Cocktail Instructions */
-.my-list {
-  text-align: left;
-}
-/* Save Recipe Button */
-.my-btn {
-  background-color: rgb(189, 225, 255);
-  padding: 10px;
-  font-size: 20px;
-  border-radius: 8px;
-}
-.my-btn:hover {
-  background-color: rgb(134, 201, 255);
-}
-
-.main-card {
-  background-color: rgba(208, 255, 0, 0.103);
 }

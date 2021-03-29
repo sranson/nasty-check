@@ -16,14 +16,41 @@ body {
   column-gap: 30px;
 }
 
-.food-form {
-  display: flex;
-  justify-content: center;
+.food-form,
+.drink-form {
   background-color: rgba(0, 0, 255, 0.25);
   border-radius: 5px;
   padding: 2%;
+  margin: 1%;
+}
+
+.hide {
+  display: none;
 }
 
 .dropdown {
-  margin: 2%;
+  margin: 1%;
+  width: 100%;
+}
+
+.dropdown-toggle {
+  width: 100%;
+}
+
+.dropdown-menu {
+  width: 100%;
+}
+
+.dropdown-item {
+  width: 100%;
+}
+
+.formSubmit {
+  display: flex;
+  justify-content: center;
+}
+
+.submitBtn {
+  width: 90%;
+  margin: 1%;
 }

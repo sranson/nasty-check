@@ -42,22 +42,23 @@
         </div>
       </div>
 
+      <!--MEAL TYPE DROPDOWN-->
       <div class="form food-form">
         <div class="row">
           <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" role="button" id="mealType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Meal Type
-            </a>
-
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item">Breakfast</a></li>
-              <li><a class="dropdown-item">Lunch</a></li>
-              <li><a class="dropdown-item">Dinner</a></li>
-              <li><a class="dropdown-item">Snack</a></li>
-              <li><a class="dropdown-item">Teatime</a></li>
+            <a class="btn btn-secondary dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meal Type</a>
+            <ul class="dropdown-menu" id="mealTypeDropDown" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" id="breakfast">Breakfast</a></li>
+              <li><a class="dropdown-item" id="lunch">Lunch</a></li>
+              <li><a class="dropdown-item" id="dinner">Dinner</a></li>
+              <li><a class="dropdown-item" id="snack">Snack</a></li>
+              <li><a class="dropdown-item" id="teatime">Teatime</a></li>
             </ul>
           </div>
         </div>
+
+
+  <!--PROTEIN TYPE DROPDOWN-->
         <div class="row">
           <div class="dropdown">
             <a
@@ -109,7 +110,7 @@
         </div>
 
         <div class="row formSubmit">
-          <button class="btn submitBtn btn-primary">Submit</button>
+          <button class="btn submitBtn btn-primary" id="searchBtn">Submit</button>
         </div>
       </div>
 
@@ -147,5 +148,6 @@
       </div>
     </main>
   </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="assets/js/script.js"></script>
 </html>

@@ -4,64 +4,39 @@ var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
 var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 
 
+
+let mealType = "";
+let proteinType = "";
+let cusineType = "";
+
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 //=======================================================================================
 $(mealTypeDropDown).click(function(e) {
-  selectedMealType = e.target.id;
-  getMealType(e.target.id);
+  mealType = e.target.id;
 })
-
-function getMealType(selectedMealType) {
-  mealType = selectedMealType;
-  console.log(mealType);
-}
 //=======================================================================================
-
 
 
 // GET USER INPUT FROM PROTEIN TYPE DROP DOWN MENU
 //=======================================================================================
 $(proteinTypeDropDown).click(function(e) {
-  selectedProteinType = e.target.id;
-  getProteinType(e.target.id);
+  proteinType = e.target.id;
 })
-
-function getProteinType(selectedProteinType) {
-  proteinType = selectedProteinType;
-  console.log(proteinType);
-}
 //=======================================================================================
 
 // GET USER INPUT FROM CUISINE TYPE DROP DOWN MENU
 //=======================================================================================
 $(cuisineTypeDropDown).click(function(e) {
-  selectedCusineType = e.target.id;
-  getCusineType(e.target.id);
+  cusineType = e.target.id;
 })
-
-function getCusineType(selectedCusineType) {
-  cusineType = selectedCusineType;
-  console.log(cusineType);
-}
 //=======================================================================================
 
 
 
-
-// Temporary hard-coded values........ get this data from "getUserInputForMeals" function
-//let proteinType = "beef";
-//let mealType = "lunch";
-//let cusineType = "chinese";
-
 // Meal Data API calls
-var getMealReceipes = function (mealType, proteinType, cusineType) {
+var getMealReceipes = function () {
   var mealAPI =
-    "https://api.edamam.com/search?q=+" +
-    proteinType +
-    "&app_id=1c0e8432&app_key=85fb82c1cc22979ec45ced7b58e387af&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +
-    mealType +
-    "&cuisineType=" +
-    cusineType;
+    "https://api.edamam.com/search?q=+" +proteinType +"&app_id=1c0e8432&app_key=85fb82c1cc22979ec45ced7b58e387af&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +mealType +"&cuisineType=" +cusineType;
 
   fetch(mealAPI)
     .then(function (response) {
@@ -230,6 +205,7 @@ function formatCocktailRecipeData(data) {
 // EVENT LISTENERS
 //================================================================================
 
-
+// Add an event listener to the search button that passes mealType, proteinType, and cusineType to the "getMealReceipes" function
+searchBtn.addEventListener('click', getMealReceipes)
 //================================================================================
 

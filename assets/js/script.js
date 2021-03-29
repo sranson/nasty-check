@@ -1,31 +1,29 @@
 var searchBtn = document.getElementById('searchBtn');
 var mealTypeDropDown = document.getElementById('mealTypeDropDown');
-var breakfast = document.getElementById('breakfast');
-var lunch = document.getElementById('lunch');
-var dinner = document.getElementById('dinner');
-var snack = document.getElementById('lunch');
+var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
+
 
 $(mealTypeDropDown).click(function(e) {
   selectedMealType = e.target.id;
   getMealType(e.target.id);
 })
 
-
 function getMealType(selectedMealType) {
-  console.log(selectedMealType);
+  mealType = selectedMealType;
+  console.log(mealType);
+}
+
+$(proteinTypeDropDown).click(function(e) {
+  selectedProteinType = e.target.id;
+  getProteinType(e.target.id);
+})
+
+function getProteinType(selectedProteinType) {
+  proteinType = selectedProteinType;
+  console.log(proteinType);
 }
 
 
-function getUserInputForMeals() {
-  // Get the user's input for meal type
-
-  //console.log(mealTypeDropDown.children[0].innerText);
-  // Get the user's input for protein type
-
-  // Get the user's input for cuisine type
-
-  // pass the values for all 3 variables to the "getMealReceipes" function
-}
 
 
 
@@ -211,7 +209,7 @@ function formatCocktailRecipeData(data) {
 
 // EVENT LISTENERS
 //================================================================================
-searchBtn.addEventListener('click', getUserInputForMeals);
+
 
 //================================================================================
 

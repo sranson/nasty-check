@@ -1,3 +1,4 @@
+var toggle = document.getElementById('toggle');
 var searchBtn = document.getElementById('searchBtn');
 var mealTypeDropDown = document.getElementById('mealTypeDropDown');
 var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
@@ -5,32 +6,31 @@ var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 
 
 
+$(toggle).click(function(e) {
+  userToggleOption = e.target.id;
+  console.log(userToggleOption);
+})
+
+
+
 let mealType = "";
 let proteinType = "";
 let cusineType = "";
 
-// GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 //=======================================================================================
+// GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 $(mealTypeDropDown).click(function(e) {
   mealType = e.target.id;
 })
-//=======================================================================================
-
-
 // GET USER INPUT FROM PROTEIN TYPE DROP DOWN MENU
-//=======================================================================================
 $(proteinTypeDropDown).click(function(e) {
   proteinType = e.target.id;
 })
-//=======================================================================================
-
 // GET USER INPUT FROM CUISINE TYPE DROP DOWN MENU
-//=======================================================================================
 $(cuisineTypeDropDown).click(function(e) {
   cusineType = e.target.id;
 })
 //=======================================================================================
-
 
 
 // Meal Data API calls
@@ -197,7 +197,6 @@ function formatCocktailRecipeData(data) {
 
 // TRIGGERS API CALL FUNCTIONS
 //================================================================================
-//getMealReceipes(mealType, proteinType, cusineType);
 //getCocktailAPIdata(alcoholType);
 //================================================================================
 

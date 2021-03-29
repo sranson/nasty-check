@@ -30,14 +30,18 @@
       <div class="container col-xs-12">
         <div class="row">
           <!-- food/drink toggle -->
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons" id="toggle">
+
             <label class="btn btn-primary">
-              <input type="radio" name="options" autocomplete="off" /> Meals
+              <input id="meals" type="radio" name="options" autocomplete="off" checked /> 
+              Meals
             </label>
+
             <label class="btn btn-primary active">
-              <input type="radio" name="options" autocomplete="off" checked />
+              <input id="drinks" type="radio" name="options" autocomplete="off" />
               Drinks
             </label>
+
           </div>
         </div>
       </div>

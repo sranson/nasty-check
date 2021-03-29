@@ -1,4 +1,6 @@
 var toggle = document.getElementById('toggle');
+var foodForm = document.getElementById('foodForm');
+var drinkForm = document.getElementById('drinkForm');
 var searchBtn = document.getElementById('searchBtn');
 var mealTypeDropDown = document.getElementById('mealTypeDropDown');
 var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
@@ -8,7 +10,19 @@ var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 
 $(toggle).click(function(e) {
   userToggleOption = e.target.id;
-  console.log(userToggleOption);
+  if (userToggleOption === "meals") {
+    console.log("Show meal dropdowns");
+        // Hide "drink form"
+        drinkForm.classList.add('hide');    
+    // Show "food-form"
+    foodForm.classList.remove('hide');
+  } else {
+    console.log("Show drink dropdowns");
+        // Hide "food form"
+        foodForm.classList.add('hide');
+        // Show "food-form"
+        drinkForm.classList.remove('hide');
+  }
 })
 
 

@@ -30,41 +30,39 @@
       <div class="container col-xs-12">
         <div class="row">
           <!-- food/drink toggle -->
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons" id="toggle">
+
             <label class="btn btn-primary">
-              <input type="radio" name="options" autocomplete="off" /> Meals
+              <input id="meals" type="radio" name="options" autocomplete="off" checked /> 
+              Food Recipes
             </label>
+
             <label class="btn btn-primary active">
-              <input type="radio" name="options" autocomplete="off" checked />
-              Drinks
+              <input id="drinks" type="radio" name="options" autocomplete="off" />
+              Cocktail Recipes
             </label>
+
           </div>
         </div>
       </div>
 
-      <div class="form food-form">
+      <!--MEAL TYPE DROPDOWN-->
+      <div class="form food-form" id="foodForm">
         <div class="row">
           <div class="dropdown">
-            <a
-              class="btn btn-secondary dropdown-toggle"
-              role="button"
-              id="mealType"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Meal Type
-            </a>
-
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item">Breakfast</a></li>
-              <li><a class="dropdown-item">Lunch</a></li>
-              <li><a class="dropdown-item">Dinner</a></li>
-              <li><a class="dropdown-item">Snack</a></li>
-              <li><a class="dropdown-item">Teatime</a></li>
+            <a class="btn btn-secondary dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meal Type</a>
+            <ul class="dropdown-menu" id="mealTypeDropDown" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" id="breakfast">Breakfast</a></li>
+              <li><a class="dropdown-item" id="lunch">Lunch</a></li>
+              <li><a class="dropdown-item" id="dinner">Dinner</a></li>
+              <li><a class="dropdown-item" id="snack">Snack</a></li>
+              <li><a class="dropdown-item" id="teatime">Teatime</a></li>
             </ul>
           </div>
         </div>
+
+
+  <!--PROTEIN TYPE DROPDOWN-->
         <div class="row">
           <div class="dropdown">
             <a
@@ -78,15 +76,16 @@
               Protein Type
             </a>
 
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item">Chicken</a></li>
-              <li><a class="dropdown-item">Steak</a></li>
-              <li><a class="dropdown-item">Beef</a></li>
-              <li><a class="dropdown-item">Shrimp</a></li>
+            <ul class="dropdown-menu" id="proteinTypeDropDown" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" id="chicken">Chicken</a></li>
+              <li><a class="dropdown-item" id="steak">Steak</a></li>
+              <li><a class="dropdown-item" id="beef">Beef</a></li>
+              <li><a class="dropdown-item" id="shrimp">Shrimp</a></li>
             </ul>
           </div>
         </div>
 
+    <!--CUISINE TYPE DROPDOWN-->
         <div class="row">
           <div class="dropdown">
             <a
@@ -100,27 +99,33 @@
               Cuisine Type
             </a>
 
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item">Indian</a></li>
-              <li><a class="dropdown-item">Mexican</a></li>
-              <li><a class="dropdown-item">Chinese</a></li>
-              <li><a class="dropdown-item">American</a></li>
-              <li><a class="dropdown-item">Asian</a></li>
-              <li><a class="dropdown-item">British</a></li>
-              <li><a class="dropdown-item">Caribbean</a></li>
-              <li><a class="dropdown-item">French</a></li>
-              <li><a class="dropdown-item">Italian</a></li>
-              <li><a class="dropdown-item">Japanese</a></li>
+            <ul class="dropdown-menu" id="cuisineTypeDropDown" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" id="indian">Indian</a></li>
+              <li><a class="dropdown-item" id="mexican">Mexican</a></li>
+              <li><a class="dropdown-item" id="chinese">Chinese</a></li>
+              <li><a class="dropdown-item" id="american">American</a></li>
+              <li><a class="dropdown-item" id="asian">Asian</a></li>
+              <li><a class="dropdown-item" id="british">British</a></li>
+              <li><a class="dropdown-item" id="caribbean">Caribbean</a></li>
+              <li><a class="dropdown-item" id="french">French</a></li>
+              <li><a class="dropdown-item" id="italian">Italian</a></li>
+              <li><a class="dropdown-item" id="japanese">Japanese</a></li>
             </ul>
           </div>
         </div>
 
+
         <div class="row formSubmit">
-          <button class="btn submitBtn btn-primary">Submit</button>
+          <button class="btn submitBtn btn-primary" id="mealSearchBtn">Search Meals</button>
         </div>
       </div>
 
-      <div class="form drink-form">
+
+
+
+
+  <!--ALCOHOL TYPE DROPDOWN-->      
+      <div class="form drink-form hide" id="drinkForm">
         <div class="row">
           <div class="dropdown">
             <a
@@ -134,26 +139,26 @@
               Alcohol Type
             </a>
 
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item">Gin</a></li>
-              <li><a class="dropdown-item">Vodka</a></li>
-              <li><a class="dropdown-item">Tequila</a></li>
-              <li><a class="dropdown-item">Rum</a></li>
-              <li><a class="dropdown-item">Whiskey</a></li>
-              <li><a class="dropdown-item">Bourbon</a></li>
-              <li><a class="dropdown-item">Brandy</a></li>
-              <li><a class="dropdown-item">Absinthe</a></li>
-              <li><a class="dropdown-item">Everclear</a></li>
+            <ul class="dropdown-menu" id="alcoholTypeDropDown" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" id="gin">Gin</a></li>
+              <li><a class="dropdown-item" id="vodka">Vodka</a></li>
+              <li><a class="dropdown-item" id="tequila">Tequila</a></li>
+              <li><a class="dropdown-item" id="rum">Rum</a></li>
+              <li><a class="dropdown-item" id="whiskey">Whiskey</a></li>
+              <li><a class="dropdown-item" id="bourbon">Bourbon</a></li>
+              <li><a class="dropdown-item" id="brandy">Brandy</a></li>
+              <li><a class="dropdown-item" id="absinthe">Absinthe</a></li>
+              <li><a class="dropdown-item" id="everclear">Everclear</a></li>
             </ul>
           </div>
         </div>
 
         <div class="row formSubmit">
-          <button class="btn submitBtn btn-primary">Submit</button>
+          <button class="btn submitBtn btn-primary" id="cocktailSearchBtn">Search Cocktails</button>
         </div>
       </div>
     </main>
   </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="assets/js/script.js"></script>
-  <script src="./assets/script.js"></script>
 </html>

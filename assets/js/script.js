@@ -1,27 +1,27 @@
 var toggle = document.getElementById('toggle');
 var foodForm = document.getElementById('foodForm');
 var drinkForm = document.getElementById('drinkForm');
-var searchBtn = document.getElementById('searchBtn');
+var mealSearchBtn = document.getElementById('mealSearchBtn');
+var cocktailSearchBtn = document.getElementById('cocktailSearchBtn');
 var mealTypeDropDown = document.getElementById('mealTypeDropDown');
 var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
 var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
+var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
 
 
 
 $(toggle).click(function(e) {
   userToggleOption = e.target.id;
   if (userToggleOption === "meals") {
-    console.log("Show meal dropdowns");
-        // Hide "drink form"
-        drinkForm.classList.add('hide');    
+    // Hide "drink form"
+      drinkForm.classList.add('hide');    
     // Show "food-form"
     foodForm.classList.remove('hide');
   } else {
-    console.log("Show drink dropdowns");
-        // Hide "food form"
-        foodForm.classList.add('hide');
-        // Show "food-form"
-        drinkForm.classList.remove('hide');
+      // Hide "food form"
+      foodForm.classList.add('hide');
+      // Show "food-form"
+      drinkForm.classList.remove('hide');
   }
 })
 
@@ -30,6 +30,7 @@ $(toggle).click(function(e) {
 let mealType = "";
 let proteinType = "";
 let cusineType = "";
+let alcoholType = "";
 
 //=======================================================================================
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
@@ -48,7 +49,7 @@ $(cuisineTypeDropDown).click(function(e) {
 
 
 // Meal Data API calls
-var getMealReceipes = function () {
+var getMealRecipes = function () {
   var mealAPI =
     "https://api.edamam.com/search?q=+" +proteinType +"&app_id=1c0e8432&app_key=85fb82c1cc22979ec45ced7b58e387af&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +mealType +"&cuisineType=" +cusineType;
 
@@ -88,16 +89,15 @@ function formatMealData(data) {
   }
 }
 
-
-// Step 1: User provides alcohol type
-let alcoholType = "vodka";
-
+// GET USER INPUT FROM ALCOHOL TYPE DROP DOWN MENU
+$(alcoholTypeDropDown).click(function(e) {
+  alcoholType = e.target.id;
+})
 
 
 //Step 2: We make an API call based on alcohol type     ====================  PASSES ALL THE DATA FOR SELECTED ALCOHOL TYPE TO THE "formatDrinkData" function  ==================
-var getCocktailAPIdata = function (alcoholType) {
-  var cocktailAPI1 =
-    "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcoholType;
+var getCocktailAPIdata = function () {
+  var cocktailAPI1 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcoholType;
 
   fetch(cocktailAPI1)
     .then(function (response) {
@@ -115,7 +115,6 @@ var getCocktailAPIdata = function (alcoholType) {
 };
 
 
-
 cocktailNameArray = [];
 cocktailImageArray = [];
 cocktailIdArray = []
@@ -131,15 +130,12 @@ function formatDrinkData(data) {
     cocktailNameArray.push(cocktailName);
     cocktailImageArray.push(cocktailImage);
     cocktailIdArray.push(cocktailID);
-    //console.log(cocktailIdArray);
+    getCocktailRecipeData(cocktailIdArray[i]);
   }
 }
 
 
 // Add an event listener to ALL 5 Cards ... Based on "e.target", grab the drinkID and store it in a variable -- "drinkID"... Pass the drinkID to the "getCocktailRecipeData" function) 
-// THIS IS HARD-CODED FOR NOW
-getCocktailRecipeData("178318");
-
 
 function getCocktailRecipeData (drinkID) {
   var cocktailAPI2 = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="+drinkID;
@@ -194,31 +190,30 @@ function formatCocktailRecipeData(data) {
   instructions = data.drinks[0].strInstructions;
 
   //return (cocktailName, cocktailImage, ingredients, measurements, instructions)
-  //console.log(cocktailName);
-  //console.log(cocktailImage);
-  //if (cocktailRecipe.drinks[0].strIngredient1 !== null) {console.log(`${measurements[0]} ${ingredients[0]}`)};
-  //if (cocktailRecipe.drinks[0].strIngredient2 !== null) {console.log(`${measurements[1]} ${ingredients[1]}`)};
-  //if (cocktailRecipe.drinks[0].strIngredient3 !== null) {console.log(`${measurements[2]} ${ingredients[2]}`);}
-  //if (cocktailRecipe.drinks[0].strIngredient4 !== null) {console.log(`${measurements[3]} ${ingredients[3]}`);}
-  //if (cocktailRecipe.drinks[0].strIngredient5 !== null) {console.log(`${measurements[4]} ${ingredients[4]}`);}
-  //if (cocktailRecipe.drinks[0].strIngredient6 !== null) {console.log(`${measurements[5]} ${ingredients[5]}`);}
-  //if (cocktailRecipe.drinks[0].strIngredient7 !== null) {console.log(`${measurements[6]} ${ingredients[6]}`);}
-  //console.log(instructions);
+  console.log(cocktailName);
+  console.log(cocktailImage);
+  if (cocktailRecipe.drinks[0].strIngredient1 !== null) {console.log(`${measurements[0]} ${ingredients[0]}`)};
+  if (cocktailRecipe.drinks[0].strIngredient2 !== null) {console.log(`${measurements[1]} ${ingredients[1]}`)};
+  if (cocktailRecipe.drinks[0].strIngredient3 !== null) {console.log(`${measurements[2]} ${ingredients[2]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient4 !== null) {console.log(`${measurements[3]} ${ingredients[3]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient5 !== null) {console.log(`${measurements[4]} ${ingredients[4]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient6 !== null) {console.log(`${measurements[5]} ${ingredients[5]}`);}
+  if (cocktailRecipe.drinks[0].strIngredient7 !== null) {console.log(`${measurements[6]} ${ingredients[6]}`);}
+  console.log(instructions);
+  console.log("------------------------");
+  console.log("");
 }
 
 
 
 
-// TRIGGERS API CALL FUNCTIONS
-//================================================================================
-//getCocktailAPIdata(alcoholType);
-//================================================================================
 
 
 // EVENT LISTENERS
 //================================================================================
 
 // Add an event listener to the search button that passes mealType, proteinType, and cusineType to the "getMealReceipes" function
-searchBtn.addEventListener('click', getMealReceipes)
+mealSearchBtn.addEventListener('click', getMealRecipes)
+cocktailSearchBtn.addEventListener('click', getCocktailAPIdata)
 //================================================================================
 

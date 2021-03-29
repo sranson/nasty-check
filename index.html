@@ -34,12 +34,12 @@
 
             <label class="btn btn-primary">
               <input id="meals" type="radio" name="options" autocomplete="off" checked /> 
-              Meals
+              Food Recipes
             </label>
 
             <label class="btn btn-primary active">
               <input id="drinks" type="radio" name="options" autocomplete="off" />
-              Drinks
+              Cocktail Recipes
             </label>
 
           </div>
@@ -116,7 +116,7 @@
 
 
         <div class="row formSubmit">
-          <button class="btn submitBtn btn-primary" id="searchBtn">Submit</button>
+          <button class="btn submitBtn btn-primary" id="mealSearchBtn">Search Meals</button>
         </div>
       </div>
 
@@ -125,8 +125,6 @@
 
 
   <!--ALCOHOL TYPE DROPDOWN-->      
-
-
       <div class="form drink-form hide" id="drinkForm">
         <div class="row">
           <div class="dropdown">
@@ -141,22 +139,22 @@
               Alcohol Type
             </a>
 
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item">Gin</a></li>
-              <li><a class="dropdown-item">Vodka</a></li>
-              <li><a class="dropdown-item">Tequila</a></li>
-              <li><a class="dropdown-item">Rum</a></li>
-              <li><a class="dropdown-item">Whiskey</a></li>
-              <li><a class="dropdown-item">Bourbon</a></li>
-              <li><a class="dropdown-item">Brandy</a></li>
-              <li><a class="dropdown-item">Absinthe</a></li>
-              <li><a class="dropdown-item">Everclear</a></li>
+            <ul class="dropdown-menu" id="alcoholTypeDropDown" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" id="gin">Gin</a></li>
+              <li><a class="dropdown-item" id="vodka">Vodka</a></li>
+              <li><a class="dropdown-item" id="tequila">Tequila</a></li>
+              <li><a class="dropdown-item" id="rum">Rum</a></li>
+              <li><a class="dropdown-item" id="whiskey">Whiskey</a></li>
+              <li><a class="dropdown-item" id="bourbon">Bourbon</a></li>
+              <li><a class="dropdown-item" id="brandy">Brandy</a></li>
+              <li><a class="dropdown-item" id="absinthe">Absinthe</a></li>
+              <li><a class="dropdown-item" id="everclear">Everclear</a></li>
             </ul>
           </div>
         </div>
 
         <div class="row formSubmit">
-          <button class="btn submitBtn btn-primary">Submit</button>
+          <button class="btn submitBtn btn-primary" id="cocktailSearchBtn">Search Cocktails</button>
         </div>
       </div>
     </main>

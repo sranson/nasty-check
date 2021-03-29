@@ -1,8 +1,11 @@
 var searchBtn = document.getElementById('searchBtn');
 var mealTypeDropDown = document.getElementById('mealTypeDropDown');
 var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
+var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 
 
+// GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
+//=======================================================================================
 $(mealTypeDropDown).click(function(e) {
   selectedMealType = e.target.id;
   getMealType(e.target.id);
@@ -12,7 +15,12 @@ function getMealType(selectedMealType) {
   mealType = selectedMealType;
   console.log(mealType);
 }
+//=======================================================================================
 
+
+
+// GET USER INPUT FROM PROTEIN TYPE DROP DOWN MENU
+//=======================================================================================
 $(proteinTypeDropDown).click(function(e) {
   selectedProteinType = e.target.id;
   getProteinType(e.target.id);
@@ -22,8 +30,20 @@ function getProteinType(selectedProteinType) {
   proteinType = selectedProteinType;
   console.log(proteinType);
 }
+//=======================================================================================
 
+// GET USER INPUT FROM CUISINE TYPE DROP DOWN MENU
+//=======================================================================================
+$(cuisineTypeDropDown).click(function(e) {
+  selectedCusineType = e.target.id;
+  getCusineType(e.target.id);
+})
 
+function getCusineType(selectedCusineType) {
+  cusineType = selectedCusineType;
+  console.log(cusineType);
+}
+//=======================================================================================
 
 
 

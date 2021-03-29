@@ -4,13 +4,20 @@
   }
 } */
 
-body {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* body {
   background-image: url(../images/pexels-julie-aagaard-2097090.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 2%;
+} */
+html {
+  height: 100vh;
 }
-
 .container {
   display: inline;
   column-gap: 30px;
@@ -27,7 +34,15 @@ body {
 .dropdown {
   margin: 2%;
 }
-
+/* Drink Results HTML */
 .drink-result {
-  font-size: xx-large;
+  font-family: "Courgette", cursive;
+  background-image: url(../images/pexels-cottonbro-4686940.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
 }

@@ -1,0 +1,31 @@
+
+/* Drink Results HTML */
+.drink-result {
+  font-family: "Courgette", cursive;
+  background-image: url(../images/pexels-cottonbro-4686940.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+/* Food and Cocktail Recipes Brand */
+.my-brand {
+  font-size: 30px;
+}
+/* Cocktail Instructions */
+.my-list {
+  text-align: left;
+}
+/* Save Recipe Button */
+.my-btn {
+  background-color: rgb(189, 225, 255);
+  font-size: 15px;
+  border-radius: 5px;
+}
+.my-btn:hover {
+  background-color: rgb(134, 201, 255);
+}

@@ -61,3 +61,18 @@ html {
   width: 90%;
   margin: 1%;
 }
+
+
+.foodSearchResultsBody {
+  background-image: url(../images/pexels-daria-shevtsova-1095550.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 2%;
+}
+
+.searchResultsMain {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  justify-content: center;
+}

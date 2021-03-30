@@ -11,3 +11,8 @@ main {
     column-gap: 30px;
     justify-content: center;
 }
+
+
+.hide {
+    display: none;
+  }

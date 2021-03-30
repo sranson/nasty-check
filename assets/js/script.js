@@ -7,6 +7,13 @@ var mealTypeDropDown = document.getElementById('mealTypeDropDown');
 var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
 var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
+var searchResults = document.getElementById('searchResults')
+
+
+function removeSearchDropdowns() {
+  toggle.classList.add('hide');
+  foodForm.classList.add('hide');
+}
 
 
 
@@ -73,20 +80,33 @@ function formatMealData(data) {
   mealData = data;
   recipeNumber = mealData.hits.length;
   console.log("Number of Food Recipes Returned from API call: " + recipeNumber);
-  console.log("-------------");
+  removeSearchDropdowns();
+
   for (i = 0; i < recipeNumber; i++) {
     recipeLabel = mealData.hits[i].recipe.label; 
+    console.log(recipeLabel);
     recipeSourceName = mealData.hits[i].recipe.source; 
+    console.log(recipeSourceName);
     recipeImage = mealData.hits[i].recipe.image; 
+    console.log(recipeImage);
     recipeInstructionsLink = mealData.hits[i].recipe.url;
-    console.log("Recipe Label " + i + ": " + recipeLabel);
-    console.log("Recipe Source " + i + ": " + recipeSourceName);
-    console.log("Recipe Image " + i + ": " + recipeImage);
-    console.log(
-    "Recipe URL for instructions " + i + ": " + recipeInstructionsLink
-    );
-    console.log("-------------");
+    console.log(recipeInstructionsLink);
+    foodSearchResultsBody.classList.remove('hide');
+    showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstructionsLink);
   }
+}
+
+function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstructionsLink) {
+  searchResults.innerHTML += `
+  <div class="card" style="width: 18rem;">
+  <img src="${recipeImage}" class="card-img-top" alt="image of desired food item">
+  <div class="card-body">
+      <h5 class="card-title">${recipeLabel}</h5>
+      <p class="card-text">${recipeSourceName}</p>
+      <a href="${recipeInstructionsLink}" class="btn btn-primary">Go To Recipe</a>
+  </div>
+</div>
+  `
 }
 
 // GET USER INPUT FROM ALCOHOL TYPE DROP DOWN MENU
@@ -212,10 +232,6 @@ function formatCocktailRecipeData(data) {
   console.log("");
   //======================================================================================================================================================
 }
-
-
-
-
 
 
 // EVENT LISTENERS

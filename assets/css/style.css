@@ -55,7 +55,6 @@ body {
   margin: 1%;
 }
 
-
 .foodSearchResultsBody {
   background-image: url(../images/pexels-daria-shevtsova-1095550.jpg);
   background-size: 100%;
@@ -68,4 +67,11 @@ body {
   flex-direction: row;
   column-gap: 30px;
   justify-content: center;
+}
+
+.food-result {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 }

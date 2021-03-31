@@ -110,10 +110,6 @@ function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstruc
   </div>
 </div>
   `
-  //localStorage.setItem("Image", recipeImage);
-  //localStorage.setItem("Food Label", recipeLabel);
-  //localStorage.setItem("Recipe Source", recipeSourceName);
-  //localStorage.setItem("Recipe Instructions", recipeInstructionsLink);
 }
 
 // GET USER INPUT FROM ALCOHOL TYPE DROP DOWN MENU
@@ -122,7 +118,6 @@ $(alcoholTypeDropDown).click(function(e) {
 })
 
 
-//Step 2: We make an API call based on alcohol type     ====================  PASSES ALL THE DATA FOR SELECTED ALCOHOL TYPE TO THE "formatDrinkData" function  ==================
 var getCocktailAPIdata = function () {
   var cocktailAPI1 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcoholType;
 
@@ -142,33 +137,18 @@ var getCocktailAPIdata = function () {
 };
 
 
-cocktailNameArray = [];
-cocktailImageArray = [];
-cocktailIdArray = []
 
-
-// Step 3: FIRST API call returns (1)DRINK NAME (2)DRINK IMAGE (3)DRINK ID into ARRAYS  ================= USE THIS DATA TO SHOW THE USER 5 DRINK CARDS/ OPTIONS ==============================
 function formatDrinkData(data) {
   cockTailData = data;
   removeSearchDropdowns();
   cocktailSearchResultsBody.classList.remove('hide');
 
   for (i=0; i < 5; i++) {
-    // Use cocktailName and cocktailImage to show search results for 5 cards
-    //==================================================================================
     cocktailName = cockTailData.drinks[i].strDrink;
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
-    cocktailID = cockTailData.drinks[i].idDrink; //Although the cocktailID will not be visible, add the cocktailID on to each card so an event listener will push the cocktailID to the "getCocktailRecipeData" function
-    //==================================================================================
-    cocktailNameArray.push(cocktailName);
-    cocktailImageArray.push(cocktailImage);
-    cocktailIdArray.push(cocktailID);                             // I am pushing the 5 cocktail IDs into an array
+    cocktailID = cockTailData.drinks[i].idDrink;                          
     getCocktailRecipeData(cocktailID);
-  }
-    // Add an event listener to ALL 5 Cards
-    // Based on the target card, grab the drinkID and store it in a variable called "currentCocktailID"
-    //Pass "currentCocktailID" to the "getCocktailRecipeData" function) 
-    //getCocktailRecipeData(currentCocktailID);                        
+  }                     
 }
 
 
@@ -248,32 +228,11 @@ function formatCocktailRecipeData(data) {
 </div>
 </div>
   `
-
-  //=================================================================CONSOLE LOGS FOR TESTING===========================================================
-  console.log(cocktailName);
-  console.log(cocktailImage);
-  // For front-end, only add ingredients to HTML if ingredient !== null
-  if (ingr1 !== null) {console.log(`${meas1} ${ingr1}`)};
-  if (ingr2 !== null) {console.log(`${meas2} ${ingr2}`)};
-  if (ingr3 !== null) {console.log(`${meas3} ${ingr3}`);}
-  if (ingr4 !== null) {console.log(`${meas4} ${ingr4}`);}
-  if (ingr5 !== null) {console.log(`${meas5} ${ingr5}`);}
-  if (ingr6 !== null) {console.log(`${meas6} ${ingr6}`);}
-  if (ingr7 !== null) {console.log(`${meas7} ${ingr7}`);}
-  if (ingr8 !== null) {console.log(`${meas8} ${ingr8}`);}
-  if (ingr9 !== null) {console.log(`${meas9} ${ingr9}`);}
-  if (ingr10 !== null) {console.log(`${meas10} ${ingr10}`);}
-  console.log(instructions);
-  console.log("------------------------");
-  console.log("");
-  //======================================================================================================================================================
 }
 
 
 // EVENT LISTENERS
 //================================================================================
-
-// Add an event listener to the search button that passes mealType, proteinType, and cusineType to the "getMealReceipes" function
 mealSearchBtn.addEventListener('click', getMealRecipes)
 cocktailSearchBtn.addEventListener('click', getCocktailAPIdata)
 //================================================================================

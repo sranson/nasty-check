@@ -58,7 +58,7 @@ $(cuisineTypeDropDown).click(function(e) {
 // Meal Data API calls
 var getMealRecipes = function () {
   var mealAPI =
-    "https://api.edamam.com/search?q=+" +proteinType +"&app_id=1c0e8432&app_key=85fb82c1cc22979ec45ced7b58e387af&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +mealType +"&cuisineType=" +cusineType;
+    "https://api.edamam.com/search?q=+" +proteinType +"&app_id=bb8fbaaa&app_key=5f7663bd4a1e69d006360434dbeda6ff&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +mealType +"&cuisineType=" +cusineType;
 
   fetch(mealAPI)
     .then(function (response) {

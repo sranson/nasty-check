@@ -100,10 +100,10 @@ function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstruc
   searchResults.innerHTML += `
   <div class="card" style="width: 18rem;">
   <img src="${recipeImage}" class="card-img-top" alt="image of desired food item">
-  <div class="card-body">
+  <div class="card-body food-result">
       <h5 class="card-title">${recipeLabel}</h5>
       <p class="card-text">${recipeSourceName}</p>
-      <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary">Go To Recipe</a>
+      <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary recipeButton">Go To Recipe</a>
   </div>
 </div>
   `

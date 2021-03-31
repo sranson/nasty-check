@@ -12,6 +12,8 @@ var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBo
 var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
 var ingredientsList = document.getElementById('ingredientsList');
 var instructionsSection = document.getElementById('instructionsSection');
+var MealResultsGoBackBtn = document.getElementById('MealResultsGoBackBtn');
+var CocktailResultsGoBackBtn = document.getElementById('CocktailResultsGoBackBtn')
 
 function removeSearchDropdowns() {
   toggle.classList.add('hide');
@@ -59,7 +61,7 @@ $(cuisineTypeDropDown).click(function(e) {
 //=======================================================================================
 
 
-// Meal Data API calls
+// Meal Recipe Data API calls
 var getMealRecipes = function () {
   var mealAPI =
     "https://api.edamam.com/search?q=+" +proteinType +"&app_id=bb8fbaaa&app_key=5f7663bd4a1e69d006360434dbeda6ff&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +mealType +"&cuisineType=" +cusineType;
@@ -100,6 +102,7 @@ function formatMealData(data) {
   }
 }
 
+// Adds food recipe data to HTML
 function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstructionsLink) {
   searchResults.innerHTML += `
   <div class="card" style="width: 18rem;">
@@ -108,7 +111,6 @@ function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstruc
       <h5 class="card-title">${recipeLabel}</h5>
       <p class="card-text">${recipeSourceName}</p>
       <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary recipeButton">Go To Recipe</a>
-  </div>
 </div>
   `
 }
@@ -118,7 +120,7 @@ $(alcoholTypeDropDown).click(function(e) {
   alcoholType = e.target.id;
 })
 
-
+// Cocktail Recipe Data API calls
 var getCocktailAPIdata = function () {
   var cocktailAPI1 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcoholType;
 
@@ -138,7 +140,7 @@ var getCocktailAPIdata = function () {
 };
 
 
-
+// Formats the Cocktail Recipe Data
 function formatDrinkData(data) {
   cockTailData = data;
   removeSearchDropdowns();
@@ -152,7 +154,7 @@ function formatDrinkData(data) {
   }                     
 }
 
-
+// Gets the cocktail recipe ingredients and instructions
 function getCocktailRecipeData (drinkID) {
   var cocktailAPI2 = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="+drinkID;
 
@@ -175,6 +177,7 @@ function getCocktailRecipeData (drinkID) {
 ingredients = [];
 measurements = [];
 
+// Formats the cocktail recipe ingredients and instruction data ---- Adds the cocktail recipe to HTML
 function formatCocktailRecipeData(data) {
   cocktailRecipe = data;
   //=================================================================
@@ -226,13 +229,11 @@ function formatCocktailRecipeData(data) {
   if (ingr10== null) {ingr10 = ""};
   if (meas10 == null) {meas10 = ""}
 
-  //=================================================================
-
     cocktailRecipesResults.innerHTML += `
     <div class="card bg-light m-4" style="width: 18rem">
       <div class="card-body">
         <h2 class="card-title text-center">${cocktailName}</h2>
-        <a href="#"><img src="${cocktailImage}" id="imageID1" class="card-img rounded mx-auto d-block" alt="Responsive image of cocktail"/></a>
+        <a href="#"><img src="${cocktailImage}" class="card-img rounded mx-auto d-block" alt="Responsive image of cocktail"/></a>
       </div>
     <div>
 
@@ -258,9 +259,16 @@ function formatCocktailRecipeData(data) {
 `
 }
 
+function reloadSearchPage() {
+  location.reload();
+}
+
+
 // EVENT LISTENERS
 //================================================================================
 mealSearchBtn.addEventListener('click', getMealRecipes)
 cocktailSearchBtn.addEventListener('click', getCocktailAPIdata)
+MealResultsGoBackBtn.addEventListener('click', reloadSearchPage)
+CocktailResultsGoBackBtn.addEventListener('click', reloadSearchPage)
 //================================================================================
 

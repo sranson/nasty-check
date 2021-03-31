@@ -4,13 +4,21 @@
   }
 } */
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Courgette", cursive;
+}
 body {
   background-image: url(../images/pexels-julie-aagaard-2097090.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 2%;
 }
-
+html {
+  height: 100vh;
+}
 .container {
   display: inline;
   column-gap: 30px;

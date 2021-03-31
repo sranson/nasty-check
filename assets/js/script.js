@@ -10,8 +10,6 @@ var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
 var searchResults = document.getElementById('searchResults')
 var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
 var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
-var ingredientsList = document.getElementById('ingredientsList');
-var instructionsSection = document.getElementById('instructionsSection');
 var MealResultsGoBackBtn = document.getElementById('MealResultsGoBackBtn');
 var CocktailResultsGoBackBtn = document.getElementById('CocktailResultsGoBackBtn')
 
@@ -246,6 +244,8 @@ function formatCocktailRecipeData(data) {
           ${meas6} ${ingr6} <br>
           ${meas7} ${ingr7} <br>
           ${meas8} ${ingr8} <br>
+          ${meas9} ${ingr9} <br>
+          ${meas10} ${ingr10} <br>
 
     <h4>Instructions:</h4>
       <p id="instructionsSection1">${instructions}</p>

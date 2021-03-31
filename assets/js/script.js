@@ -8,11 +8,14 @@ var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
 var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
 var searchResults = document.getElementById('searchResults')
+var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
+var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
 
 
 function removeSearchDropdowns() {
   toggle.classList.add('hide');
   foodForm.classList.add('hide');
+  drinkForm.classList.add('hide');
 }
 
 
@@ -107,6 +110,10 @@ function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstruc
   </div>
 </div>
   `
+  //localStorage.setItem("Image", recipeImage);
+  //localStorage.setItem("Food Label", recipeLabel);
+  //localStorage.setItem("Recipe Source", recipeSourceName);
+  //localStorage.setItem("Recipe Instructions", recipeInstructionsLink);
 }
 
 // GET USER INPUT FROM ALCOHOL TYPE DROP DOWN MENU
@@ -143,6 +150,9 @@ cocktailIdArray = []
 // Step 3: FIRST API call returns (1)DRINK NAME (2)DRINK IMAGE (3)DRINK ID into ARRAYS  ================= USE THIS DATA TO SHOW THE USER 5 DRINK CARDS/ OPTIONS ==============================
 function formatDrinkData(data) {
   cockTailData = data;
+  removeSearchDropdowns();
+  cocktailSearchResultsBody.classList.remove('hide');
+
   for (i=0; i < 5; i++) {
     // Use cocktailName and cocktailImage to show search results for 5 cards
     //==================================================================================
@@ -211,7 +221,33 @@ function formatCocktailRecipeData(data) {
   meas10 =  cocktailRecipe.drinks[0].strMeasure10
   instructions = data.drinks[0].strInstructions;
   //=================================================================
+  cocktailRecipesResults.innerHTML += `
+  <div class="card bg-light m-4" style="width: 18rem">
+  <div class="card-body">
+    <h2 class="card-title text-center">${cocktailName}</h2>
+    <a href="#"><img src="${cocktailImage}" class="card-img rounded mx-auto d-block" alt="Responsive image of cocktail"/></a>
+  </div>
+<div>
 
+<h4>Ingredients:</h4>
+  <ul>
+    <li class="text-left"> ${meas1} ${ingr1}</li>
+    <li>${meas2} ${ingr2}</li>
+    <li>${meas3} ${ingr3}</li>
+    <li>${meas4} ${ingr4}</li>
+    <li>${meas5} ${ingr5}</li>
+  </ul>
+
+  <h4>Instructions:</h4>
+    <p>${instructions}</p>
+</div>
+
+<!-- Save Recipe Button -->
+<button type="button" class="btn my-btn mb-4">Save Recipe</button>
+</div>
+</div>
+</div>
+  `
 
   //=================================================================CONSOLE LOGS FOR TESTING===========================================================
   console.log(cocktailName);

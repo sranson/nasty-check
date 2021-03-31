@@ -10,7 +10,8 @@ var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
 var searchResults = document.getElementById('searchResults')
 var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
 var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
-
+var ingredientsList = document.getElementById('ingredientsList');
+var instructionsSection = document.getElementById('instructionsSection');
 
 function removeSearchDropdowns() {
   toggle.classList.add('hide');
@@ -179,16 +180,6 @@ function formatCocktailRecipeData(data) {
   //=================================================================
   cocktailName = cocktailRecipe.drinks[0].strDrink;
   cocktailImage = cocktailRecipe.drinks[0].strDrinkThumb;
-  ingr1 = cocktailRecipe.drinks[0].strIngredient1;
-  ingr2 = cocktailRecipe.drinks[0].strIngredient2;
-  ingr3 = cocktailRecipe.drinks[0].strIngredient3;
-  ingr4 = cocktailRecipe.drinks[0].strIngredient4;
-  ingr5 = cocktailRecipe.drinks[0].strIngredient5;
-  ingr6 = cocktailRecipe.drinks[0].strIngredient6;
-  ingr7 = cocktailRecipe.drinks[0].strIngredient7;
-  ingr8 = cocktailRecipe.drinks[0].strIngredient8;
-  ingr9 = cocktailRecipe.drinks[0].strIngredient9;
-  ingr10 = cocktailRecipe.drinks[0].strIngredient10;
   meas1 =  cocktailRecipe.drinks[0].strMeasure1
   meas2 =  cocktailRecipe.drinks[0].strMeasure2
   meas3 =  cocktailRecipe.drinks[0].strMeasure3
@@ -200,36 +191,72 @@ function formatCocktailRecipeData(data) {
   meas9 =  cocktailRecipe.drinks[0].strMeasure9
   meas10 =  cocktailRecipe.drinks[0].strMeasure10
   instructions = data.drinks[0].strInstructions;
+
+  ingredients = [];
+  measurements = [];
+
+  ingr1 = cocktailRecipe.drinks[0].strIngredient1;
+  if (ingr1 == null) {ingr1 = ""};
+  if (meas1 == null) {meas1 = ""}
+  ingr2 = cocktailRecipe.drinks[0].strIngredient2;
+  if (ingr2 == null) {ingr2 = ""};
+  if (meas2 == null) {meas2 = ""}
+  ingr3 = cocktailRecipe.drinks[0].strIngredient3;
+  if (ingr3 == null) {ingr3 = ""};
+  if (meas3 == null) {meas3 = ""}
+  ingr4 = cocktailRecipe.drinks[0].strIngredient4;
+  if (ingr4 == null) {ingr4 = ""};
+  if (meas4 == null) {meas4 = ""}
+  ingr5 = cocktailRecipe.drinks[0].strIngredient5;
+  if (ingr5 == null) {ingr5 = ""};
+  if (meas5 == null) {meas5 = ""}
+  ingr6 = cocktailRecipe.drinks[0].strIngredient6;
+  if (ingr6 == null) {ingr6= ""};
+  if (meas6 == null) {meas6 = ""}
+  ingr7 = cocktailRecipe.drinks[0].strIngredient7;
+  if (ingr7 == null) {ingr7 = ""};
+  if (meas7 == null) {meas7 = ""}
+  ingr8 = cocktailRecipe.drinks[0].strIngredient8;
+  if (ingr8 == null) {ingr8 = ""};
+  if (meas8 == null) {meas8 = ""}
+  ingr9 = cocktailRecipe.drinks[0].strIngredient9;
+  if (ingr9 == null) {ingr9 = ""};
+  if (meas9 == null) {meas9 = ""}
+  ingr10 = cocktailRecipe.drinks[0].strIngredient10;
+  if (ingr10== null) {ingr10 = ""};
+  if (meas10 == null) {meas10 = ""}
+
   //=================================================================
-  cocktailRecipesResults.innerHTML += `
-  <div class="card bg-light m-4" style="width: 18rem">
-  <div class="card-body">
-    <h2 class="card-title text-center">${cocktailName}</h2>
-    <a href="#"><img src="${cocktailImage}" class="card-img rounded mx-auto d-block" alt="Responsive image of cocktail"/></a>
+
+    cocktailRecipesResults.innerHTML += `
+    <div class="card bg-light m-4" style="width: 18rem">
+      <div class="card-body">
+        <h2 class="card-title text-center">${cocktailName}</h2>
+        <a href="#"><img src="${cocktailImage}" id="imageID1" class="card-img rounded mx-auto d-block" alt="Responsive image of cocktail"/></a>
+      </div>
+    <div>
+
+    <h4>Ingredients:</h4>
+          ${meas1} ${ingr1} <br>
+          ${meas2} ${ingr2} <br>
+          ${meas3} ${ingr3} <br>
+          ${meas4} ${ingr4} <br>
+          ${meas5} ${ingr5} <br>
+          ${meas6} ${ingr6} <br>
+          ${meas7} ${ingr7} <br>
+          ${meas8} ${ingr8} <br>
+
+    <h4>Instructions:</h4>
+      <p id="instructionsSection1">${instructions}</p>
   </div>
-<div>
 
-<h4>Ingredients:</h4>
-  <ul>
-    <li class="text-left"> ${meas1} ${ingr1}</li>
-    <li>${meas2} ${ingr2}</li>
-    <li>${meas3} ${ingr3}</li>
-    <li>${meas4} ${ingr4}</li>
-    <li>${meas5} ${ingr5}</li>
-  </ul>
-
-  <h4>Instructions:</h4>
-    <p>${instructions}</p>
-</div>
-
-<!-- Save Recipe Button -->
-<button type="button" class="btn my-btn mb-4">Save Recipe</button>
-</div>
-</div>
-</div>
-  `
+    <!-- Save Recipe Button -->
+    <button type="button" class="btn my-btn mb-4">Save Recipe</button>
+          </div>
+        </div>
+    </div>
+`
 }
-
 
 // EVENT LISTENERS
 //================================================================================

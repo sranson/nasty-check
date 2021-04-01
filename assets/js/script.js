@@ -5,6 +5,7 @@ var mealSearchBtn = document.getElementById('mealSearchBtn');
 var cocktailSearchBtn = document.getElementById('cocktailSearchBtn');
 var mealTypeDropDown = document.getElementById('mealTypeDropDown');
 var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
+var proteinDropdownDiv = document.getElementById('proteinDropdownDiv');
 var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
 var searchResults = document.getElementById('searchResults')
@@ -47,6 +48,9 @@ let alcoholType = "";
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 $(mealTypeDropDown).click(function(e) {
   mealType = e.target.id;
+  if (mealType == "snack") {
+    proteinDropdownDiv.classList.add('hide');
+  }
 })
 // GET USER INPUT FROM PROTEIN TYPE DROP DOWN MENU
 $(proteinTypeDropDown).click(function(e) {

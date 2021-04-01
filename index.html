@@ -12,6 +12,16 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -22,21 +32,6 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
-      <a class="navbar-brand my-brand" href="#">Food and Cocktail Recipes</a>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a
-            class="nav-link px-5"
-            href="https://sranson.github.io/recipe-finder/"
-            >Home <span class="sr-only"></span
-          ></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Saved Recipes</a>
-        </li>
-      </ul>
-    </nav>
     <main>
       <!---------------------------------------------------------------------TOGGLE------------------------------------------------------------------------>
       <div class="container col-xs-12">
@@ -170,6 +165,9 @@
 
       <div id="foodSearchResultsBody" class="hide">
         <main id="searchResults" class="searchResultsMain"></main>
+        <div class="row" style="justify-content: center; margin-left: 40%; margin-right: 40%; margin-top: 8%;">
+          <button id="MealResultsGoBackBtn" class="btn btn-primary">Search More Recipes</button>
+        </div>
       </div>
 
       <!------------------------------------------------------------END OF FOOD RECIPE SECTION-------------------------------------------------------------------->
@@ -225,26 +223,19 @@
       <div class="row justify-content-center" id="cocktailRecipesResults">
         <!--Javascript creates cards here-->
       </div>
+      <div class="row" style="justify-content: center; margin-left: 40%; margin-right: 40%; margin-top: 4%;">
+        <button id="CocktailResultsGoBackBtn" class="btn btn-primary">Search More Recipes</button>
+      </div>
     </div>
 </div>
 </div>
       <!------------------------------------------------------------END OF COCKTAIL RECIPE SECTION---------------------------------------------------------------->
     </main>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
-    <script src="assets/js/script.js"></script>
   </body>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+  ></script>
+  <script src="assets/js/script.js"></script>
 </html>

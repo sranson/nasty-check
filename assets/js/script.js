@@ -5,21 +5,21 @@ var mealSearchBtn = document.getElementById('mealSearchBtn');
 var cocktailSearchBtn = document.getElementById('cocktailSearchBtn');
 var mealTypeDropDown = document.getElementById('mealTypeDropDown');
 var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
-var proteinDropdownDiv = document.getElementById('proteinDropdownDiv');
 var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
-var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
-var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
 var searchResults = document.getElementById('searchResults')
 var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
 var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
-var saveBtnEl = document.getElementsByClassName('saveBtn')
+var MealResultsGoBackBtn = document.getElementById('MealResultsGoBackBtn');
+var CocktailResultsGoBackBtn = document.getElementById('CocktailResultsGoBackBtn')
 
 function removeSearchDropdowns() {
   toggle.classList.add('hide');
   foodForm.classList.add('hide');
   drinkForm.classList.add('hide');
 }
+
+
 
 $(toggle).click(function(e) {
   userToggleOption = e.target.id;
@@ -47,11 +47,6 @@ let alcoholType = "";
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 $(mealTypeDropDown).click(function(e) {
   mealType = e.target.id;
-  if (mealType == "snack" || mealType == "teatime") {
-    proteinDropdownDiv.classList.add('hide');
-  } else {
-    proteinDropdownDiv.classList.remove('hide');
-  }
 })
 // GET USER INPUT FROM PROTEIN TYPE DROP DOWN MENU
 $(proteinTypeDropDown).click(function(e) {
@@ -113,19 +108,9 @@ function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstruc
   <div class="card-body food-result">
       <h5 class="card-title">${recipeLabel}</h5>
       <p class="card-text">${recipeSourceName}</p>
-      <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary resultsBtn recipeButton">Go To Recipe</a>
-      <button class="btn btn-primary resultsBtn saveBtn">Save</button>
-  </div>
+      <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary recipeButton">Go To Recipe</a>
 </div>
   `
-    // save food card to localstorage
-  $(saveBtnEl).click(function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    var foodName = $(this).siblings("h5").text();
-    var foodCard = $(this).parent("div").html();
-    localStorage.setItem(foodName, foodCard);
-  });
 }
 
 // GET USER INPUT FROM ALCOHOL TYPE DROP DOWN MENU
@@ -283,4 +268,6 @@ function reloadSearchPage() {
 //================================================================================
 mealSearchBtn.addEventListener('click', getMealRecipes)
 cocktailSearchBtn.addEventListener('click', getCocktailAPIdata)
+MealResultsGoBackBtn.addEventListener('click', reloadSearchPage)
+CocktailResultsGoBackBtn.addEventListener('click', reloadSearchPage)
 //================================================================================

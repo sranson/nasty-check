@@ -45,8 +45,14 @@ let alcoholType = "";
 
 //=======================================================================================
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
+// GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 $(mealTypeDropDown).click(function(e) {
   mealType = e.target.id;
+  if (mealType == "snack" || mealType == "teatime") {
+    proteinDropdownDiv.classList.add('hide');
+  } else {
+    proteinDropdownDiv.classList.remove('hide');
+  }
 })
 // GET USER INPUT FROM PROTEIN TYPE DROP DOWN MENU
 $(proteinTypeDropDown).click(function(e) {

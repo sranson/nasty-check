@@ -14,7 +14,6 @@ body {
   background-image: url(../images/pexels-julie-aagaard-2097090.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
-  padding: 2%;
 }
 html {
   height: 100vh;
@@ -84,6 +83,7 @@ html {
   justify-content: space-between;
 }
 
+<<<<<<< HEAD
 
 /* Drink Results HTML */
 .drink-result {
@@ -115,3 +115,12 @@ html {
 .my-btn:hover {
   background-color: rgb(134, 201, 255);
 }
+=======
+.resultsBtn {
+  margin-top: 2%;
+}
+
+nav {
+  overflow-x: hidden;
+}
+>>>>>>> ad0f7904cc2c8822718e0193f4b8e35929fa03b3

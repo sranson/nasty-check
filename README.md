@@ -50,7 +50,7 @@ Credits to [TheCocktailDB](https://www.thecocktaildb.com/) for providing the coc
 ## License
 
 MIT License  
-Copyright (c) [2021] [Nasty Check Inc; Braxton Bodenhamer, Kris Lucas, Karen Roh, Salome Ranson]  
+Copyright (c) [2021] [Team Nasty; Braxton Bodenhamer, Kris Lucas, Karen Roh, Salome Ranson]  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights

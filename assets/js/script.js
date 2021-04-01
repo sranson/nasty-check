@@ -113,7 +113,7 @@ function showFoodCards(
       <h5 class="card-title">${recipeLabel}</h5>
       <p class="card-text">${recipeSourceName}</p>
       <a href="${recipeInstructionsLink}" target="_blank" class="btn my-btn mb-2 recipeButton">Go To Recipe</a>
-      <button type="button" class="btn my-btn mb-4">Save Recipe</button>
+  
   </div>
 </div>
   `;

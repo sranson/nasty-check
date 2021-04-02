@@ -150,7 +150,7 @@ function formatDrinkData(data) {
   removeSearchDropdowns();
   cocktailSearchResultsBody.classList.remove('hide');
 
-  for (i=0; i < 5; i++) {
+  for (i=0; i < 3; i++) {
     cocktailName = cockTailData.drinks[i].strDrink;
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
     cocktailID = cockTailData.drinks[i].idDrink;                          
@@ -274,6 +274,4 @@ function reloadSearchPage() {
 //================================================================================
 mealSearchBtn.addEventListener('click', getMealRecipes)
 cocktailSearchBtn.addEventListener('click', getCocktailAPIdata)
-MealResultsGoBackBtn.addEventListener('click', reloadSearchPage)
-CocktailResultsGoBackBtn.addEventListener('click', reloadSearchPage)
 //================================================================================

@@ -38,9 +38,17 @@ THEN I am presented with the list of saved food and cocktail recipes
 
 ## Mock-Up
 
-The following images show the web application's appearance and functionality:
+**_When toggle to Food Recipes on main page:_**
+![Food Recipe Dropdowns](./assets/images/food-recipes.png)
 
-![Placeholder for images](./nasty-check/assets/images/pexels-cottonbro-4686940.jpg)
+**_Food recipe results after selecting from dropdown menus:_**
+![Food Recipe Results](./assets/images/food-recipes-result.png)
+
+**_When toggle to Cocktail Recipes on main page:_**
+![Cocktail Recipe Dropdowns](./assets/images/cocktail-recipes.png)
+
+**_Cocktail recipe results after selecting from dropdown menu:_**
+![Cocktail Recipe Results](./assets/images/cocktail-recipes-result.png)
 
 ## Credits
 

@@ -10,8 +10,8 @@ var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
 var searchResults = document.getElementById('searchResults')
 var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
 var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
+var saveDrinkBtnEl = document.getElementsByClassName('my-btn')
 var saveBtnEl = document.getElementsByClassName('saveBtn')
-
 
 function removeSearchDropdowns() {
   toggle.classList.add('hide');
@@ -247,31 +247,32 @@ function formatCocktailRecipeData(data) {
       <div class="card-body">
         <h2 class="card-title text-center">${cocktailName}</h2>
         <a href="#"><img src="${cocktailImage}" class="card-img rounded mx-auto d-block" alt="Responsive image of cocktail"/></a>
+        <h4>Ingredients:</h4>
+        ${meas1} ${ingr1} <br>
+        ${meas2} ${ingr2} <br>
+        ${meas3} ${ingr3} <br>
+        ${meas4} ${ingr4} <br>
+        ${meas5} ${ingr5} <br>
+        ${meas6} ${ingr6} <br>
+        ${meas7} ${ingr7} <br>
+        ${meas8} ${ingr8} <br>
+        ${meas9} ${ingr9} <br>
+        ${meas10} ${ingr10} <br>
+        <h4>Instructions:</h4>
+        <p id="instructionsSection1">${instructions}</p>
+        <button type="button" class="btn my-btn mb-4">Save Recipe</button>
       </div>
-    <div>
-
-    <h4>Ingredients:</h4>
-          ${meas1} ${ingr1} <br>
-          ${meas2} ${ingr2} <br>
-          ${meas3} ${ingr3} <br>
-          ${meas4} ${ingr4} <br>
-          ${meas5} ${ingr5} <br>
-          ${meas6} ${ingr6} <br>
-          ${meas7} ${ingr7} <br>
-          ${meas8} ${ingr8} <br>
-          ${meas9} ${ingr9} <br>
-          ${meas10} ${ingr10} <br>
-
-    <h4>Instructions:</h4>
-      <p id="instructionsSection1">${instructions}</p>
-  </div>
-
-    <!-- Save Recipe Button -->
-    <button type="button" class="btn my-btn mb-4">Save Recipe</button>
-          </div>
-        </div>
     </div>
 `
+// save food card to localstorage
+$(saveDrinkBtnEl).click(function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  var drinkName = $(this).siblings("h2").text();
+  var drinkCard = $(this).parent("div").parent("div").html();
+  localStorage.setItem(drinkName, drinkCard);
+});
+
 }
 
 function reloadSearchPage() {

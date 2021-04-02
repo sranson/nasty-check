@@ -15,9 +15,7 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
 }
-html {
-  height: 100vh;
-}
+
 .container {
   display: inline;
   column-gap: 30px;
@@ -85,8 +83,4 @@ html {
 
 .resultsBtn {
   margin-top: 2%;
-}
-
-nav {
-  overflow-x: hidden;
 }

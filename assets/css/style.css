@@ -82,6 +82,9 @@ html {
   flex-direction: column;
   justify-content: space-between;
 }
+.resultsBtn {
+  margin-top: 2%;
+}
 
 /* Drink Results HTML */
 .drink-result {

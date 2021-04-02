@@ -7,13 +7,19 @@ var mealTypeDropDown = document.getElementById('mealTypeDropDown');
 var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
 var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
 var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
+var searchResults = document.getElementById('searchResults')
+var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
+var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
 var saveBtnEl = document.getElementsByClassName('saveBtn')
-var searchResults = document.getElementById('searchResults');
+
 
 function removeSearchDropdowns() {
   toggle.classList.add('hide');
   foodForm.classList.add('hide');
+  drinkForm.classList.add('hide');
 }
+
+
 
 $(toggle).click(function(e) {
   userToggleOption = e.target.id;
@@ -39,8 +45,14 @@ let alcoholType = "";
 
 //=======================================================================================
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
+// GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 $(mealTypeDropDown).click(function(e) {
   mealType = e.target.id;
+  if (mealType == "snack" || mealType == "teatime") {
+    proteinDropdownDiv.classList.add('hide');
+  } else {
+    proteinDropdownDiv.classList.remove('hide');
+  }
 })
 // GET USER INPUT FROM PROTEIN TYPE DROP DOWN MENU
 $(proteinTypeDropDown).click(function(e) {
@@ -53,7 +65,7 @@ $(cuisineTypeDropDown).click(function(e) {
 //=======================================================================================
 
 
-// Meal Data API calls
+// Meal Recipe Data API calls
 var getMealRecipes = function () {
   var mealAPI =
     "https://api.edamam.com/search?q=+" +proteinType +"&app_id=bb8fbaaa&app_key=5f7663bd4a1e69d006360434dbeda6ff&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +mealType +"&cuisineType=" +cusineType;
@@ -94,6 +106,7 @@ function formatMealData(data) {
   }
 }
 
+// Adds food recipe data to HTML
 function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstructionsLink) {
   searchResults.innerHTML += `
   <div class="card" style="width: 18rem;">
@@ -101,12 +114,11 @@ function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstruc
   <div class="card-body food-result">
       <h5 class="card-title">${recipeLabel}</h5>
       <p class="card-text">${recipeSourceName}</p>
-      <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary resultsBtn recipeButton">Go To Recipe</a>
+      <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary recipeButton">Go To Recipe</a>
       <button class="btn btn-primary resultsBtn saveBtn">Save</button>
-  </div>
 </div>
   `
-    // save food card to localstorage
+  // save food card to localstorage
   $(saveBtnEl).click(function(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -121,8 +133,7 @@ $(alcoholTypeDropDown).click(function(e) {
   alcoholType = e.target.id;
 })
 
-
-//Step 2: We make an API call based on alcohol type     ====================  PASSES ALL THE DATA FOR SELECTED ALCOHOL TYPE TO THE "formatDrinkData" function  ==================
+// Cocktail Recipe Data API calls
 var getCocktailAPIdata = function () {
   var cocktailAPI1 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcoholType;
 
@@ -142,33 +153,21 @@ var getCocktailAPIdata = function () {
 };
 
 
-cocktailNameArray = [];
-cocktailImageArray = [];
-cocktailIdArray = []
-
-
-// Step 3: FIRST API call returns (1)DRINK NAME (2)DRINK IMAGE (3)DRINK ID into ARRAYS  ================= USE THIS DATA TO SHOW THE USER 5 DRINK CARDS/ OPTIONS ==============================
+// Formats the Cocktail Recipe Data
 function formatDrinkData(data) {
   cockTailData = data;
-  for (i=0; i < 5; i++) {
-    // Use cocktailName and cocktailImage to show search results for 5 cards
-    //==================================================================================
+  removeSearchDropdowns();
+  cocktailSearchResultsBody.classList.remove('hide');
+
+  for (i=0; i < 3; i++) {
     cocktailName = cockTailData.drinks[i].strDrink;
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
-    cocktailID = cockTailData.drinks[i].idDrink; //Although the cocktailID will not be visible, add the cocktailID on to each card so an event listener will push the cocktailID to the "getCocktailRecipeData" function
-    //==================================================================================
-    cocktailNameArray.push(cocktailName);
-    cocktailImageArray.push(cocktailImage);
-    cocktailIdArray.push(cocktailID);                             // I am pushing the 5 cocktail IDs into an array
+    cocktailID = cockTailData.drinks[i].idDrink;                          
     getCocktailRecipeData(cocktailID);
-  }
-    // Add an event listener to ALL 5 Cards
-    // Based on the target card, grab the drinkID and store it in a variable called "currentCocktailID"
-    //Pass "currentCocktailID" to the "getCocktailRecipeData" function) 
-    //getCocktailRecipeData(currentCocktailID);                        
+  }                     
 }
 
-
+// Gets the cocktail recipe ingredients and instructions
 function getCocktailRecipeData (drinkID) {
   var cocktailAPI2 = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="+drinkID;
 
@@ -191,21 +190,12 @@ function getCocktailRecipeData (drinkID) {
 ingredients = [];
 measurements = [];
 
+// Formats the cocktail recipe ingredients and instruction data ---- Adds the cocktail recipe to HTML
 function formatCocktailRecipeData(data) {
   cocktailRecipe = data;
   //=================================================================
   cocktailName = cocktailRecipe.drinks[0].strDrink;
   cocktailImage = cocktailRecipe.drinks[0].strDrinkThumb;
-  ingr1 = cocktailRecipe.drinks[0].strIngredient1;
-  ingr2 = cocktailRecipe.drinks[0].strIngredient2;
-  ingr3 = cocktailRecipe.drinks[0].strIngredient3;
-  ingr4 = cocktailRecipe.drinks[0].strIngredient4;
-  ingr5 = cocktailRecipe.drinks[0].strIngredient5;
-  ingr6 = cocktailRecipe.drinks[0].strIngredient6;
-  ingr7 = cocktailRecipe.drinks[0].strIngredient7;
-  ingr8 = cocktailRecipe.drinks[0].strIngredient8;
-  ingr9 = cocktailRecipe.drinks[0].strIngredient9;
-  ingr10 = cocktailRecipe.drinks[0].strIngredient10;
   meas1 =  cocktailRecipe.drinks[0].strMeasure1
   meas2 =  cocktailRecipe.drinks[0].strMeasure2
   meas3 =  cocktailRecipe.drinks[0].strMeasure3
@@ -217,34 +207,80 @@ function formatCocktailRecipeData(data) {
   meas9 =  cocktailRecipe.drinks[0].strMeasure9
   meas10 =  cocktailRecipe.drinks[0].strMeasure10
   instructions = data.drinks[0].strInstructions;
-  //=================================================================
 
+  ingredients = [];
+  measurements = [];
 
-  //=================================================================CONSOLE LOGS FOR TESTING===========================================================
-  console.log(cocktailName);
-  console.log(cocktailImage);
-  // For front-end, only add ingredients to HTML if ingredient !== null
-  if (ingr1 !== null) {console.log(`${meas1} ${ingr1}`)};
-  if (ingr2 !== null) {console.log(`${meas2} ${ingr2}`)};
-  if (ingr3 !== null) {console.log(`${meas3} ${ingr3}`);}
-  if (ingr4 !== null) {console.log(`${meas4} ${ingr4}`);}
-  if (ingr5 !== null) {console.log(`${meas5} ${ingr5}`);}
-  if (ingr6 !== null) {console.log(`${meas6} ${ingr6}`);}
-  if (ingr7 !== null) {console.log(`${meas7} ${ingr7}`);}
-  if (ingr8 !== null) {console.log(`${meas8} ${ingr8}`);}
-  if (ingr9 !== null) {console.log(`${meas9} ${ingr9}`);}
-  if (ingr10 !== null) {console.log(`${meas10} ${ingr10}`);}
-  console.log(instructions);
-  console.log("------------------------");
-  console.log("");
-  //======================================================================================================================================================
+  ingr1 = cocktailRecipe.drinks[0].strIngredient1;
+  if (ingr1 == null) {ingr1 = ""};
+  if (meas1 == null) {meas1 = ""}
+  ingr2 = cocktailRecipe.drinks[0].strIngredient2;
+  if (ingr2 == null) {ingr2 = ""};
+  if (meas2 == null) {meas2 = ""}
+  ingr3 = cocktailRecipe.drinks[0].strIngredient3;
+  if (ingr3 == null) {ingr3 = ""};
+  if (meas3 == null) {meas3 = ""}
+  ingr4 = cocktailRecipe.drinks[0].strIngredient4;
+  if (ingr4 == null) {ingr4 = ""};
+  if (meas4 == null) {meas4 = ""}
+  ingr5 = cocktailRecipe.drinks[0].strIngredient5;
+  if (ingr5 == null) {ingr5 = ""};
+  if (meas5 == null) {meas5 = ""}
+  ingr6 = cocktailRecipe.drinks[0].strIngredient6;
+  if (ingr6 == null) {ingr6= ""};
+  if (meas6 == null) {meas6 = ""}
+  ingr7 = cocktailRecipe.drinks[0].strIngredient7;
+  if (ingr7 == null) {ingr7 = ""};
+  if (meas7 == null) {meas7 = ""}
+  ingr8 = cocktailRecipe.drinks[0].strIngredient8;
+  if (ingr8 == null) {ingr8 = ""};
+  if (meas8 == null) {meas8 = ""}
+  ingr9 = cocktailRecipe.drinks[0].strIngredient9;
+  if (ingr9 == null) {ingr9 = ""};
+  if (meas9 == null) {meas9 = ""}
+  ingr10 = cocktailRecipe.drinks[0].strIngredient10;
+  if (ingr10== null) {ingr10 = ""};
+  if (meas10 == null) {meas10 = ""}
+
+    cocktailRecipesResults.innerHTML += `
+    <div class="card bg-light m-4" style="width: 18rem">
+      <div class="card-body">
+        <h2 class="card-title text-center">${cocktailName}</h2>
+        <a href="#"><img src="${cocktailImage}" class="card-img rounded mx-auto d-block" alt="Responsive image of cocktail"/></a>
+      </div>
+    <div>
+
+    <h4>Ingredients:</h4>
+          ${meas1} ${ingr1} <br>
+          ${meas2} ${ingr2} <br>
+          ${meas3} ${ingr3} <br>
+          ${meas4} ${ingr4} <br>
+          ${meas5} ${ingr5} <br>
+          ${meas6} ${ingr6} <br>
+          ${meas7} ${ingr7} <br>
+          ${meas8} ${ingr8} <br>
+          ${meas9} ${ingr9} <br>
+          ${meas10} ${ingr10} <br>
+
+    <h4>Instructions:</h4>
+      <p id="instructionsSection1">${instructions}</p>
+  </div>
+
+    <!-- Save Recipe Button -->
+    <button type="button" class="btn my-btn mb-4">Save Recipe</button>
+          </div>
+        </div>
+    </div>
+`
+}
+
+function reloadSearchPage() {
+  location.reload();
 }
 
 
 // EVENT LISTENERS
 //================================================================================
-
-// Add an event listener to the search button that passes mealType, proteinType, and cusineType to the "getMealReceipes" function
 mealSearchBtn.addEventListener('click', getMealRecipes)
 cocktailSearchBtn.addEventListener('click', getCocktailAPIdata)
 //================================================================================

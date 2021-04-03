@@ -46,8 +46,8 @@ let alcoholType = "";
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 $(mealTypeDropDown).click(function (e) {
   mealType = e.target.id;
-  if (mealType == "snack" || mealType == "teatime") {
-    proteinDropdownDiv.classList.add("hide");
+  if (mealType == "snack" || mealType == "teatime" || mealType == "breakfast") {
+    proteinDropdownDiv.classList.add('hide');
   } else {
     proteinDropdownDiv.classList.remove("hide");
   }

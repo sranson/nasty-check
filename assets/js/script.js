@@ -165,7 +165,7 @@ function formatDrinkData(data) {
   for (i = 0; i < 3; i++) {
     cocktailName = cockTailData.drinks[i].strDrink;
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
-    cocktailID = cockTailData.drinks[i].idDrink;
+    cocktailID = cockTailData.drinks[i].idDrink;                        
     getCocktailRecipeData(cocktailID);
   }
 }
@@ -179,7 +179,7 @@ function getCocktailRecipeData(drinkID) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          formatCocktailRecipeData(data);
+          formatCocktailRecipeData(data, drinkID);
         });
       } else {
         alert("Error" + response.statusText);
@@ -190,11 +190,8 @@ function getCocktailRecipeData(drinkID) {
     });
 }
 
-ingredients = [];
-measurements = [];
-
 // Formats the cocktail recipe ingredients and instruction data ---- Adds the cocktail recipe to HTML
-function formatCocktailRecipeData(data) {
+function formatCocktailRecipeData(data, drinkID) {
   cocktailRecipe = data;
   //=================================================================
   cocktailName = cocktailRecipe.drinks[0].strDrink;
@@ -215,35 +212,35 @@ function formatCocktailRecipeData(data) {
   measurements = [];
 
   ingr1 = cocktailRecipe.drinks[0].strIngredient1;
-  if (ingr1 == null) {ingr1 = ""};
-  if (meas1 == null) {meas1 = ""}
+  if (ingr1 != null) {ingredients.push(ingr1)};
+  if (meas1 != null) {measurements.push(meas1)};
   ingr2 = cocktailRecipe.drinks[0].strIngredient2;
-  if (ingr2 == null) {ingr2 = ""};
-  if (meas2 == null) {meas2 = ""}
+  if (ingr2 != null) {ingredients.push(ingr2)};
+  if (meas2 != null) {measurements.push(meas2)};
   ingr3 = cocktailRecipe.drinks[0].strIngredient3;
-  if (ingr3 == null) {ingr3 = ""};
-  if (meas3 == null) {meas3 = ""}
+  if (ingr3 != null) {ingredients.push(ingr3)};
+  if (meas3 != null) {measurements.push(meas3)};
   ingr4 = cocktailRecipe.drinks[0].strIngredient4;
-  if (ingr4 == null) {ingr4 = ""};
-  if (meas4 == null) {meas4 = ""}
+  if (ingr4 != null) {ingredients.push(ingr4)};
+  if (meas4 != null) {measurements.push(meas4)};
   ingr5 = cocktailRecipe.drinks[0].strIngredient5;
-  if (ingr5 == null) {ingr5 = ""};
-  if (meas5 == null) {meas5 = ""}
+  if (ingr5 != null) {ingredients.push(ingr5)};
+  if (meas5 != null) {measurements.push(meas5)};
   ingr6 = cocktailRecipe.drinks[0].strIngredient6;
-  if (ingr6 == null) {ingr6= ""};
-  if (meas6 == null) {meas6 = ""}
+  if (ingr6 != null) {ingredients.push(ingr6)};
+  if (meas6 != null) {measurements.push(meas6)};
   ingr7 = cocktailRecipe.drinks[0].strIngredient7;
-  if (ingr7 == null) {ingr7 = ""};
-  if (meas7 == null) {meas7 = ""}
+  if (ingr7 != null) {ingredients.push(ingr7)};
+  if (meas7 != null) {measurements.push(meas7)};
   ingr8 = cocktailRecipe.drinks[0].strIngredient8;
-  if (ingr8 == null) {ingr8 = ""};
-  if (meas8 == null) {meas8 = ""}
+  if (ingr8 != null) {ingredients.push(ingr8)};
+  if (meas8 != null) {measurements.push(meas8)};
   ingr9 = cocktailRecipe.drinks[0].strIngredient9;
-  if (ingr9 == null) {ingr9 = ""};
-  if (meas9 == null) {meas9 = ""}
+  if (ingr9 != null) {ingredients.push(ingr9)};
+  if (meas9 != null) {measurements.push(meas9)};
   ingr10 = cocktailRecipe.drinks[0].strIngredient10;
-  if (ingr10== null) {ingr10 = ""};
-  if (meas10 == null) {meas10 = ""}
+  if (ingr10 != null) {ingredients.push(ingr10)};
+  if (meas10 != null) {measurements.push(meas10)};
 
   cocktailRecipesResults.innerHTML += `
     <div class="card" style="width: 18rem">
@@ -251,17 +248,8 @@ function formatCocktailRecipeData(data) {
       <img src="${cocktailImage}" class="card-img-top" alt="Responsive image of cocktail"/>
         <h2 class="card-title text-center">${cocktailName}</h2>
         <h4>Ingredients:</h4>
-        ${meas1} ${ingr1} <br>
-        ${meas2} ${ingr2} <br>
-        ${meas3} ${ingr3} <br>
-        ${meas4} ${ingr4} <br>
-        ${meas5} ${ingr5} <br>
-        ${meas6} ${ingr6} <br>
-        ${meas7} ${ingr7} <br>
-        ${meas8} ${ingr8} <br>
-        ${meas9} ${ingr9} <br>
-        ${meas10} ${ingr10}<br>
-        
+        <ul id="${drinkID}">
+        </ul>
         <h4>Instructions:</h4>
         <p id="instructionsSection1">${instructions}</p>
         <button type="button" class="btn btn-primary saveBtn">Save</button>
@@ -269,13 +257,14 @@ function formatCocktailRecipeData(data) {
     </div>
 `
 
-/*
 // this appends only measurements and ingredients that are not null
-for (step = 0; step < measurements.length; step++) {
-  $(".card-body").children("ul").append(`<li>${measurements[step]} ${ingredients[step]}</li>`)
-}
-*/
-
+  for (step = 0; step < ingredients.length; step++) {
+    if (measurements[step] != undefined) {
+      $("#" + drinkID).append(`<li>${measurements[step]} ${ingredients[step]}</li>`);
+    } else {
+      $("#" + drinkID).append(`<li>${ingredients[step]}</li>`);
+    }
+  }
 
   // save drink card to localstorage
   $(saveBtnEl).click(function (event) {

@@ -1,39 +1,41 @@
-var toggle = document.getElementById('toggle');
-var foodForm = document.getElementById('foodForm');
-var drinkForm = document.getElementById('drinkForm');
-var mealSearchBtn = document.getElementById('mealSearchBtn');
-var cocktailSearchBtn = document.getElementById('cocktailSearchBtn');
-var mealTypeDropDown = document.getElementById('mealTypeDropDown');
-var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
-var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
-var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
-var searchResults = document.getElementById('searchResults')
-var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
-var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
-var saveBtnEl = document.getElementsByClassName('saveBtn');
-var viewSavedEl = document.getElementById('viewSaved');
-var savedCardsEl = document.getElementById('savedCards');
+var toggle = document.getElementById("toggle");
+var foodForm = document.getElementById("foodForm");
+var drinkForm = document.getElementById("drinkForm");
+var mealSearchBtn = document.getElementById("mealSearchBtn");
+var cocktailSearchBtn = document.getElementById("cocktailSearchBtn");
+var mealTypeDropDown = document.getElementById("mealTypeDropDown");
+var proteinTypeDropDown = document.getElementById("proteinTypeDropDown");
+var cuisineTypeDropDown = document.getElementById("cuisineTypeDropDown");
+var alcoholTypeDropDown = document.getElementById("alcoholTypeDropDown");
+var searchResults = document.getElementById("searchResults");
+var cocktailSearchResultsBody = document.getElementById(
+  "cocktailSearchResultsBody"
+);
+var cocktailRecipesResults = document.getElementById("cocktailRecipesResults");
+var saveBtnEl = document.getElementsByClassName("saveBtn");
+var viewSavedEl = document.getElementById("viewSaved");
+var savedCardsEl = document.getElementById("savedCards");
 
 function removeSearchDropdowns() {
-  toggle.classList.add('hide');
-  foodForm.classList.add('hide');
-  drinkForm.classList.add('hide');
+  toggle.classList.add("hide");
+  foodForm.classList.add("hide");
+  drinkForm.classList.add("hide");
 }
 
-$(toggle).click(function(e) {
+$(toggle).click(function (e) {
   userToggleOption = e.target.id;
   if (userToggleOption === "meals") {
     // Hide "drink form"
-      drinkForm.classList.add('hide');    
+    drinkForm.classList.add("hide");
     // Show "food-form"
-    foodForm.classList.remove('hide');
+    foodForm.classList.remove("hide");
   } else {
-      // Hide "food form"
-      foodForm.classList.add('hide');
-      // Show "food-form"
-      drinkForm.classList.remove('hide');
+    // Hide "food form"
+    foodForm.classList.add("hide");
+    // Show "food-form"
+    drinkForm.classList.remove("hide");
   }
-})
+});
 
 let mealType = "";
 let proteinType = "";
@@ -42,29 +44,33 @@ let alcoholType = "";
 
 //=======================================================================================
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
-$(mealTypeDropDown).click(function(e) {
+$(mealTypeDropDown).click(function (e) {
   mealType = e.target.id;
   if (mealType == "snack" || mealType == "teatime" || mealType == "breakfast") {
     proteinDropdownDiv.classList.add('hide');
   } else {
-    proteinDropdownDiv.classList.remove('hide');
+    proteinDropdownDiv.classList.remove("hide");
   }
-})
+});
 // GET USER INPUT FROM PROTEIN TYPE DROP DOWN MENU
-$(proteinTypeDropDown).click(function(e) {
+$(proteinTypeDropDown).click(function (e) {
   proteinType = e.target.id;
-})
+});
 // GET USER INPUT FROM CUISINE TYPE DROP DOWN MENU
-$(cuisineTypeDropDown).click(function(e) {
+$(cuisineTypeDropDown).click(function (e) {
   cusineType = e.target.id;
-})
+});
 //=======================================================================================
-
 
 // Meal Recipe Data API calls
 var getMealRecipes = function () {
   var mealAPI =
-    "https://api.edamam.com/search?q=+" +proteinType +"&app_id=bb8fbaaa&app_key=5f7663bd4a1e69d006360434dbeda6ff&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +mealType +"&cuisineType=" +cusineType;
+    "https://api.edamam.com/search?q=+" +
+    proteinType +
+    "&app_id=bb8fbaaa&app_key=5f7663bd4a1e69d006360434dbeda6ff&from=0&to=3&calories=591-722&health=alcohol-free&mealType=" +
+    mealType +
+    "&cuisineType=" +
+    cusineType;
 
   fetch(mealAPI)
     .then(function (response) {
@@ -98,20 +104,25 @@ function formatMealData(data) {
 }
 
 // Adds food recipe data to HTML
-function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstructionsLink) {
+function showFoodCards(
+  recipeImage,
+  recipeLabel,
+  recipeSourceName,
+  recipeInstructionsLink
+) {
   searchResults.innerHTML += `
   <div class="card" style="width: 18rem;">
       <div class="card-body food-result"> 
         <img src="${recipeImage}" class="card-img-top" alt="image of desired food item">
         <h5 class="card-title">${recipeLabel}</h5>
         <p class="card-text">${recipeSourceName}</p>
-        <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary recipeButton">Go To Recipe</a>
+        <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary recipeButton">Go to Recipe</a>
         <button class="btn btn-primary resultsBtn saveBtn">Save</button>
       </div>        
   </div>
-  `
+  `;
   // save food card to localstorage
-  $(saveBtnEl).click(function(event) {
+  $(saveBtnEl).click(function (event) {
     event.preventDefault();
     event.stopPropagation();
     var foodName = $(this).siblings("h5").text();
@@ -121,13 +132,14 @@ function showFoodCards(recipeImage, recipeLabel, recipeSourceName, recipeInstruc
 }
 
 // GET USER INPUT FROM ALCOHOL TYPE DROP DOWN MENU
-$(alcoholTypeDropDown).click(function(e) {
+$(alcoholTypeDropDown).click(function (e) {
   alcoholType = e.target.id;
-})
+});
 
 // Cocktail Recipe Data API calls
 var getCocktailAPIdata = function () {
-  var cocktailAPI1 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcoholType;
+  var cocktailAPI1 =
+    "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcoholType;
 
   fetch(cocktailAPI1)
     .then(function (response) {
@@ -144,24 +156,24 @@ var getCocktailAPIdata = function () {
     });
 };
 
-
 // Formats the Cocktail Recipe Data
 function formatDrinkData(data) {
   cockTailData = data;
   removeSearchDropdowns();
-  cocktailSearchResultsBody.classList.remove('hide');
+  cocktailSearchResultsBody.classList.remove("hide");
 
-  for (i=0; i < 3; i++) {
+  for (i = 0; i < 3; i++) {
     cocktailName = cockTailData.drinks[i].strDrink;
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
-    cocktailID = cockTailData.drinks[i].idDrink;                          
+    cocktailID = cockTailData.drinks[i].idDrink;
     getCocktailRecipeData(cocktailID);
-  }                     
+  }
 }
 
 // Gets the cocktail recipe ingredients and instructions
-function getCocktailRecipeData (drinkID) {
-  var cocktailAPI2 = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="+drinkID;
+function getCocktailRecipeData(drinkID) {
+  var cocktailAPI2 =
+    "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID;
 
   fetch(cocktailAPI2)
     .then(function (response) {
@@ -176,7 +188,7 @@ function getCocktailRecipeData (drinkID) {
     .catch(function (error) {
       alert("Unable to connect to Meal API");
     });
-};
+}
 
 ingredients = [];
 measurements = [];
@@ -187,16 +199,16 @@ function formatCocktailRecipeData(data) {
   //=================================================================
   cocktailName = cocktailRecipe.drinks[0].strDrink;
   cocktailImage = cocktailRecipe.drinks[0].strDrinkThumb;
-  meas1 =  cocktailRecipe.drinks[0].strMeasure1
-  meas2 =  cocktailRecipe.drinks[0].strMeasure2
-  meas3 =  cocktailRecipe.drinks[0].strMeasure3
-  meas4 =  cocktailRecipe.drinks[0].strMeasure4
-  meas5 =  cocktailRecipe.drinks[0].strMeasure5
-  meas6 =  cocktailRecipe.drinks[0].strMeasure6
-  meas7 =  cocktailRecipe.drinks[0].strMeasure7
-  meas8 =  cocktailRecipe.drinks[0].strMeasure8
-  meas9 =  cocktailRecipe.drinks[0].strMeasure9
-  meas10 =  cocktailRecipe.drinks[0].strMeasure10
+  meas1 = cocktailRecipe.drinks[0].strMeasure1;
+  meas2 = cocktailRecipe.drinks[0].strMeasure2;
+  meas3 = cocktailRecipe.drinks[0].strMeasure3;
+  meas4 = cocktailRecipe.drinks[0].strMeasure4;
+  meas5 = cocktailRecipe.drinks[0].strMeasure5;
+  meas6 = cocktailRecipe.drinks[0].strMeasure6;
+  meas7 = cocktailRecipe.drinks[0].strMeasure7;
+  meas8 = cocktailRecipe.drinks[0].strMeasure8;
+  meas9 = cocktailRecipe.drinks[0].strMeasure9;
+  meas10 = cocktailRecipe.drinks[0].strMeasure10;
   instructions = data.drinks[0].strInstructions;
 
   ingredients = [];
@@ -233,7 +245,7 @@ function formatCocktailRecipeData(data) {
   if (ingr10== null) {ingr10 = ""};
   if (meas10 == null) {meas10 = ""}
 
-    cocktailRecipesResults.innerHTML += `
+  cocktailRecipesResults.innerHTML += `
     <div class="card" style="width: 18rem">
       <div class="card-body drink-result">
       <img src="${cocktailImage}" class="card-img-top" alt="Responsive image of cocktail"/>
@@ -265,8 +277,8 @@ for (step = 0; step < measurements.length; step++) {
 */
 
 
-// save drink card to localstorage
-  $(saveBtnEl).click(function(event) {
+  // save drink card to localstorage
+  $(saveBtnEl).click(function (event) {
     event.preventDefault();
     event.stopPropagation();
     var drinkName = $(this).siblings("h2").text();
@@ -276,19 +288,21 @@ for (step = 0; step < measurements.length; step++) {
 }
 
 //this displays the food and drink cards in localstorage
-var showSavedRecipes = function() {
+var showSavedRecipes = function () {
   removeSearchDropdowns();
   $(searchResults).hide();
   $("#cocktailSearchResultsBody").hide();
-  savedCardsEl.classList.remove('hide');
+  savedCardsEl.classList.remove("hide");
   for (i = 0; i < localStorage.length; i++) {
-    $("#savedCards").append(`<div class="card savedCard" id="${i}" style="width: 18rem">`);
+    $("#savedCards").append(
+      `<div class="card savedCard" id="${i}" style="width: 18rem">`
+    );
     let key = localStorage.key(i);
     let recipe = localStorage.getItem(key);
     $("#" + i).html(recipe);
     $(".saveBtn").remove(".saveBtn");
   }
-}
+};
 
 function reloadSearchPage() {
   location.reload();
@@ -296,7 +310,7 @@ function reloadSearchPage() {
 
 // EVENT LISTENERS
 //================================================================================
-mealSearchBtn.addEventListener('click', getMealRecipes)
-cocktailSearchBtn.addEventListener('click', getCocktailAPIdata)
-viewSavedEl.addEventListener('click', showSavedRecipes)
+mealSearchBtn.addEventListener("click", getMealRecipes);
+cocktailSearchBtn.addEventListener("click", getCocktailAPIdata);
+viewSavedEl.addEventListener("click", showSavedRecipes);
 //================================================================================

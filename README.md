@@ -50,6 +50,9 @@ THEN I am presented with the list of saved food and cocktail recipes
 **_Cocktail recipe results after selecting from dropdown menu:_**
 ![Cocktail Recipe Results](./assets/images/cocktail-recipes-result.png)
 
+**_Saved Recipes:_**
+![Saved Recipes](./assets/images/saved-recipes.png)
+
 ## Credits
 
 Credits to [EDAMAM](https://www.edamam.com/) for providing the food recipe API.  

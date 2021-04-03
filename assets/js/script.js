@@ -159,7 +159,7 @@ function formatDrinkData(data) {
   for (i=0; i < 3; i++) {
     cocktailName = cockTailData.drinks[i].strDrink;
     cocktailImage = cockTailData.drinks[i].strDrinkThumb;
-    cocktailID = cockTailData.drinks[i].idDrink;                          
+    cocktailID = cockTailData.drinks[i].idDrink;                        
     getCocktailRecipeData(cocktailID);
   }                     
 }
@@ -172,7 +172,7 @@ function getCocktailRecipeData (drinkID) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          formatCocktailRecipeData(data);
+          formatCocktailRecipeData(data, drinkID);
         });
       } else {
         alert("Error" + response.statusText);
@@ -183,11 +183,8 @@ function getCocktailRecipeData (drinkID) {
     });
 };
 
-ingredients = [];
-measurements = [];
-
 // Formats the cocktail recipe ingredients and instruction data ---- Adds the cocktail recipe to HTML
-function formatCocktailRecipeData(data) {
+function formatCocktailRecipeData(data, drinkID) {
   cocktailRecipe = data;
   //=================================================================
   cocktailName = cocktailRecipe.drinks[0].strDrink;
@@ -238,13 +235,15 @@ function formatCocktailRecipeData(data) {
   if (ingr10 != null) {ingredients.push(ingr10)};
   if (meas10 != null) {measurements.push(meas10)};
 
+  debugger
+
     cocktailRecipesResults.innerHTML += `
     <div class="card" style="width: 18rem">
       <div class="card-body drink-result">
       <img src="${cocktailImage}" class="card-img-top" alt="Responsive image of cocktail"/>
         <h2 class="card-title text-center">${cocktailName}</h2>
         <h4>Ingredients:</h4>
-        <ul>
+        <ul id="${drinkID}">
         </ul>
         <h4>Instructions:</h4>
         <p id="instructionsSection1">${instructions}</p>
@@ -252,10 +251,15 @@ function formatCocktailRecipeData(data) {
       </div>
     </div>
 `
+
 // this appends only measurements and ingredients that are not null
-for (step = 0; step < measurements.length; step++) {
-  $(".card-body").children("ul").append(`<li>${measurements[step]} ${ingredients[step]}</li>`)
-}
+  for (step = 0; step < ingredients.length; step++) {
+    if (measurements[step] != undefined) {
+      $("#" + drinkID).append(`<li>${measurements[step]} ${ingredients[step]}</li>`);
+    } else {
+      $("#" + drinkID).append(`<li>${ingredients[step]}</li>`);
+    }
+  }
 
 // save drink card to localstorage
   $(saveBtnEl).click(function(event) {

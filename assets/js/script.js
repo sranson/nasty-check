@@ -1,18 +1,18 @@
-var toggle = document.getElementById("toggle");
-var foodForm = document.getElementById("foodForm");
-var drinkForm = document.getElementById("drinkForm");
-var mealSearchBtn = document.getElementById("mealSearchBtn");
-var cocktailSearchBtn = document.getElementById("cocktailSearchBtn");
-var mealTypeDropDown = document.getElementById("mealTypeDropDown");
-var proteinTypeDropDown = document.getElementById("proteinTypeDropDown");
-var cuisineTypeDropDown = document.getElementById("cuisineTypeDropDown");
-var alcoholTypeDropDown = document.getElementById("alcoholTypeDropDown");
-var searchResults = document.getElementById("searchResults");
-var cocktailSearchResultsBody = document.getElementById(
-  "cocktailSearchResultsBody"
-);
-var cocktailRecipesResults = document.getElementById("cocktailRecipesResults");
-var saveBtnEl = document.getElementsByClassName("saveBtn");
+var toggle = document.getElementById('toggle');
+var foodForm = document.getElementById('foodForm');
+var drinkForm = document.getElementById('drinkForm');
+var mealSearchBtn = document.getElementById('mealSearchBtn');
+var cocktailSearchBtn = document.getElementById('cocktailSearchBtn');
+var mealTypeDropDown = document.getElementById('mealTypeDropDown');
+var proteinTypeDropDown = document.getElementById('proteinTypeDropDown');
+var cuisineTypeDropDown = document.getElementById('cuisineTypeDropDown');
+var alcoholTypeDropDown = document.getElementById('alcoholTypeDropDown');
+var searchResults = document.getElementById('searchResults')
+var cocktailSearchResultsBody = document.getElementById('cocktailSearchResultsBody');
+var cocktailRecipesResults = document.getElementById('cocktailRecipesResults');
+var saveBtnEl = document.getElementsByClassName('saveBtn');
+var viewSavedEl = document.getElementById('viewSaved');
+var savedCardsEl = document.getElementById('savedCards');
 
 function removeSearchDropdowns() {
   toggle.classList.add("hide");
@@ -20,7 +20,7 @@ function removeSearchDropdowns() {
   drinkForm.classList.add("hide");
 }
 
-$(toggle).click(function (e) {
+$(toggle).click(function(e) {
   userToggleOption = e.target.id;
   if (userToggleOption === "meals") {
     // Hide "drink form"
@@ -33,7 +33,7 @@ $(toggle).click(function (e) {
     // Show "food-form"
     drinkForm.classList.remove("hide");
   }
-});
+})
 
 let mealType = "";
 let proteinType = "";
@@ -42,8 +42,7 @@ let alcoholType = "";
 
 //=======================================================================================
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
-// GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
-$(mealTypeDropDown).click(function (e) {
+$(mealTypeDropDown).click(function(e) {
   mealType = e.target.id;
   if (mealType == "snack" || mealType == "teatime") {
     proteinDropdownDiv.classList.add("hide");
@@ -121,14 +120,15 @@ function showFoodCards(
 ) {
   searchResults.innerHTML += `
   <div class="card" style="width: 18rem;">
-  <img src="${recipeImage}" class="card-img-top" alt="image of desired food item">
-  <div class="card-body food-result">
-      <h5 class="card-title">${recipeLabel}</h5>
-      <p class="card-text">${recipeSourceName}</p>
-      <a href="${recipeInstructionsLink}" target="_blank" class="btn my-btn recipeButton">Go to Recipe</a>
-      <button class="btn my-btn resultsBtn saveBtn">Save Recipe</button>
-</div>
-  `;
+      <div class="card-body food-result"> 
+        <img src="${recipeImage}" class="card-img-top" alt="image of desired food item">
+        <h5 class="card-title">${recipeLabel}</h5>
+        <p class="card-text">${recipeSourceName}</p>
+        <a href="${recipeInstructionsLink}" target="_blank" class="btn btn-primary recipeButton">Go to Recipe</a>
+        <button class="btn btn-primary resultsBtn saveBtn">Save Recipe</button>
+      </div>        
+  </div>
+  `
   // save food card to localstorage
   $(saveBtnEl).click(function (event) {
     event.preventDefault();
@@ -196,7 +196,7 @@ function getCocktailRecipeData(drinkID) {
     .catch(function (error) {
       alert("Unable to connect to Meal API");
     });
-}
+};
 
 ingredients = [];
 measurements = [];
@@ -223,106 +223,78 @@ function formatCocktailRecipeData(data) {
   measurements = [];
 
   ingr1 = cocktailRecipe.drinks[0].strIngredient1;
-  if (ingr1 == null) {
-    ingr1 = "";
-  }
-  if (meas1 == null) {
-    meas1 = "";
-  }
+  if (ingr1 != null) {ingredients.push(ingr1)};
+  if (meas1 != null) {measurements.push(meas1)};
   ingr2 = cocktailRecipe.drinks[0].strIngredient2;
-  if (ingr2 == null) {
-    ingr2 = "";
-  }
-  if (meas2 == null) {
-    meas2 = "";
-  }
+  if (ingr2 != null) {ingredients.push(ingr2)};
+  if (meas2 != null) {measurements.push(meas2)};
   ingr3 = cocktailRecipe.drinks[0].strIngredient3;
-  if (ingr3 == null) {
-    ingr3 = "";
-  }
-  if (meas3 == null) {
-    meas3 = "";
-  }
+  if (ingr3 != null) {ingredients.push(ingr3)};
+  if (meas3 != null) {measurements.push(meas3)};
   ingr4 = cocktailRecipe.drinks[0].strIngredient4;
-  if (ingr4 == null) {
-    ingr4 = "";
-  }
-  if (meas4 == null) {
-    meas4 = "";
-  }
+  if (ingr4 != null) {ingredients.push(ingr4)};
+  if (meas4 != null) {measurements.push(meas4)};
   ingr5 = cocktailRecipe.drinks[0].strIngredient5;
-  if (ingr5 == null) {
-    ingr5 = "";
-  }
-  if (meas5 == null) {
-    meas5 = "";
-  }
+  if (ingr5 != null) {ingredients.push(ingr5)};
+  if (meas5 != null) {measurements.push(meas5)};
   ingr6 = cocktailRecipe.drinks[0].strIngredient6;
-  if (ingr6 == null) {
-    ingr6 = "";
-  }
-  if (meas6 == null) {
-    meas6 = "";
-  }
+  if (ingr6 != null) {ingredients.push(ingr6)};
+  if (meas6 != null) {measurements.push(meas6)};
   ingr7 = cocktailRecipe.drinks[0].strIngredient7;
-  if (ingr7 == null) {
-    ingr7 = "";
-  }
-  if (meas7 == null) {
-    meas7 = "";
-  }
+  if (ingr7 != null) {ingredients.push(ingr7)};
+  if (meas7 != null) {measurements.push(meas7)};
   ingr8 = cocktailRecipe.drinks[0].strIngredient8;
-  if (ingr8 == null) {
-    ingr8 = "";
-  }
-  if (meas8 == null) {
-    meas8 = "";
-  }
+  if (ingr8 != null) {ingredients.push(ingr8)};
+  if (meas8 != null) {measurements.push(meas8)};
   ingr9 = cocktailRecipe.drinks[0].strIngredient9;
-  if (ingr9 == null) {
-    ingr9 = "";
-  }
-  if (meas9 == null) {
-    meas9 = "";
-  }
+  if (ingr9 != null) {ingredients.push(ingr9)};
+  if (meas9 != null) {measurements.push(meas9)};
   ingr10 = cocktailRecipe.drinks[0].strIngredient10;
-  if (ingr10 == null) {
-    ingr10 = "";
-  }
-  if (meas10 == null) {
-    meas10 = "";
-  }
+  if (ingr10 != null) {ingredients.push(ingr10)};
+  if (meas10 != null) {measurements.push(meas10)};
 
-  cocktailRecipesResults.innerHTML += `
-    <div class="card bg-light m-4" style="width: 18rem">
-      <div class="card-body">
+    cocktailRecipesResults.innerHTML += `
+    <div class="card" style="width: 18rem">
+      <div class="card-body drink-result">
+      <img src="${cocktailImage}" class="card-img-top" alt="Responsive image of cocktail"/>
         <h2 class="card-title text-center">${cocktailName}</h2>
-        <a href="#"><img src="${cocktailImage}" class="card-img rounded mx-auto d-block" alt="Responsive image of cocktail"/></a>
+        <h4>Ingredients:</h4>
+        <ul>
+        </ul>
+        <h4>Instructions:</h4>
+        <p id="instructionsSection1">${instructions}</p>
+        <button type="button" class="btn btn-primary saveBtn">Save Recipe</button>
       </div>
-    <div>
-
-    <h4>Ingredients:</h4>
-          ${meas1} ${ingr1} <br>
-          ${meas2} ${ingr2} <br>
-          ${meas3} ${ingr3} <br>
-          ${meas4} ${ingr4} <br>
-          ${meas5} ${ingr5} <br>
-          ${meas6} ${ingr6} <br>
-          ${meas7} ${ingr7} <br>
-          ${meas8} ${ingr8} <br>
-          ${meas9} ${ingr9} <br>
-          ${meas10} ${ingr10} <br>
-
-    <h4>Instructions:</h4>
-      <p id="instructionsSection1">${instructions}</p>
-  </div>
-
-    <!-- Save Recipe Button -->
-    <button type="button" class="btn my-btn mb-4">Save Recipe</button>
-          </div>
-        </div>
     </div>
-`;
+`
+// this appends only measurements and ingredients that are not null
+for (step = 0; step < measurements.length; step++) {
+  $(".card-body").children("ul").append(`<li>${measurements[step]} ${ingredients[step]}</li>`)
+}
+
+// save drink card to localstorage
+  $(saveBtnEl).click(function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var drinkName = $(this).siblings("h2").text();
+    var drinkCard = $(this).parent("div").parent("div").html();
+    localStorage.setItem(drinkName, drinkCard);
+  });
+}
+
+//this displays the food and drink cards in localstorage
+var showSavedRecipes = function() {
+  removeSearchDropdowns();
+  $(searchResults).hide();
+  $("#cocktailSearchResultsBody").hide();
+  savedCardsEl.classList.remove('hide');
+  for (i = 0; i < localStorage.length; i++) {
+    $("#savedCards").append(`<div class="card savedCard" id="${i}" style="width: 18rem">`);
+    let key = localStorage.key(i);
+    let recipe = localStorage.getItem(key);
+    $("#" + i).html(recipe);
+    $(".saveBtn").remove(".saveBtn");
+  }
 }
 
 function reloadSearchPage() {
@@ -331,6 +303,7 @@ function reloadSearchPage() {
 
 // EVENT LISTENERS
 //================================================================================
-mealSearchBtn.addEventListener("click", getMealRecipes);
-cocktailSearchBtn.addEventListener("click", getCocktailAPIdata);
+mealSearchBtn.addEventListener('click', getMealRecipes)
+cocktailSearchBtn.addEventListener('click', getCocktailAPIdata)
+viewSavedEl.addEventListener('click', showSavedRecipes)
 //================================================================================

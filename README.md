@@ -5,6 +5,18 @@
 [_Deployed Recipe-Finder Application!_](https://sranson.github.io/recipe-finder/)  
 An application that provides meal and cocktail recipes.
 
+**Technologies and Tools Used:**
+
+- HTML
+- CSS
+- Bootstrap
+- Javascript
+- jQuery
+- Postman
+- Trello
+- EDAMAM API
+- CocktailDB API
+
 ## User Story
 
 ```

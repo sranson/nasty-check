@@ -235,8 +235,6 @@ function formatCocktailRecipeData(data, drinkID) {
   if (ingr10 != null) {ingredients.push(ingr10)};
   if (meas10 != null) {measurements.push(meas10)};
 
-  debugger
-
     cocktailRecipesResults.innerHTML += `
     <div class="card" style="width: 18rem">
       <div class="card-body drink-result">

@@ -44,7 +44,7 @@ let alcoholType = "";
 // GET USER INPUT FROM MEAL TYPE DROP DOWN MENU
 $(mealTypeDropDown).click(function(e) {
   mealType = e.target.id;
-  if (mealType == "snack" || mealType == "teatime") {
+  if (mealType == "snack" || mealType == "teatime" || mealType == "breakfast") {
     proteinDropdownDiv.classList.add('hide');
   } else {
     proteinDropdownDiv.classList.remove('hide');
@@ -274,7 +274,7 @@ var showSavedRecipes = function() {
   $("#cocktailSearchResultsBody").hide();
   savedCardsEl.classList.remove('hide');
   for (i = 0; i < localStorage.length; i++) {
-    $("#savedCards").append(`<div class="card" id="${i}" style="width: 18rem">`);
+    $("#savedCards").append(`<div class="card savedCard" id="${i}" style="width: 18rem">`);
     let key = localStorage.key(i);
     let recipe = localStorage.getItem(key);
     $("#" + i).html(recipe);
